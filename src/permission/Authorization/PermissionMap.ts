@@ -58,6 +58,13 @@ export default class PermissionMap {
         });
     }
 
+    resolveAll() {
+        return Observable.forkJoin(this.resolveExceptPrivilegeMap(), this.resolveOnlyPrivilegeMap())
+            .map(function (result) {
+                return result.every(x => x)
+            })
+    }
+
     resolveExceptPrivilegeMap() {
         const observableArr = this.resolvePrivilegesValidity(this.except);
 
@@ -65,10 +72,16 @@ export default class PermissionMap {
             .map(function (result) {
                 return !result.every(x => x)
             })
-
     }
 
+    resolveOnlyPrivilegeMap() {
+        const observableArr = this.resolvePrivilegesValidity(this.only);
 
+        return Observable.forkJoin(observableArr)
+            .map(function (result) {
+                return result.every(x => x)
+            })
+    }
 }
 
 function isObjectSingleRedirectionRule(redirectTo: RedirectRoute) {
