@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core'
 import { Validator } from '../models/Permission'
 import Role from '../models/Role'
-import PermissionStore from './PermissionStore'
 
 export default class RoleStore {
     private store: Dictionary<Role> = {}
 
-    constructor(private permissionStore: PermissionStore){}
-
     defineRole(roleName: string, validateFn: Validator | string[]) {
-        this.store[roleName] = new Role(roleName, validateFn, this.permissionStore)
+        this.store[roleName] = new Role(roleName, validateFn)
     }
 
     defineRoles(roleNames: string[], validateFn: Validator) {

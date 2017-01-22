@@ -6,18 +6,17 @@ import { wrapIntoObservable } from '@angular/router/src/utils/collection'
 export default class Role {
     constructor(
         private name: string,
-        private validateFn: Validator | string[],
-        private permissionStore: PermissionStore
+        private validateFn: Validator | string[]
     ) {
     }
 
-    validate(): Observable<boolean> | Promise<boolean> | boolean {
+    validate(permissionStore: PermissionStore): Observable<boolean> | Promise<boolean> | boolean {
         if (typeof this.validateFn === 'function') {
             return this.validateFn(this.name)
         } else if (Array.isArray(this.validateFn)) {
             const map = this.validateFn.map((perm) => {
-                if (this.permissionStore.hasPermissionDefinition(perm)) {
-                    return wrapIntoObservable(this.permissionStore.getPermissionDefinition(perm).validate())
+                if (permissionStore.hasPermissionDefinition(perm)) {
+                    return wrapIntoObservable(permissionStore.getPermissionDefinition(perm).validate())
                 } else {
                     return wrapIntoObservable(false)
                 }

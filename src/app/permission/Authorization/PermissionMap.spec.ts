@@ -26,7 +26,7 @@ describe('PermissionMap', () => {
             return _delete
         })
 
-        roleStore = new RoleStore(permissionStore)
+        roleStore = new RoleStore()
 
         roleStore.defineRole('Admin', ['Read', 'Write', 'Delete'])
     })

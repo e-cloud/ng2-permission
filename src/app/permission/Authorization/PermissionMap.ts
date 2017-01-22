@@ -23,17 +23,19 @@ type RedirectMap = {
     [prop: string]: RedirectFunc
 }
 
+export interface RawPermissionMap {
+    only?: string[] | string
+    except?: string[] | string
+    redirectTo?: any
+}
+
 export default class PermissionMap {
     only: string[]
     except: string[]
     redirectTo: RedirectMap
 
     constructor(
-        permissionMap: {
-            only?: string[] | string
-            except?: string[] | string
-            redirectTo?: any
-        } = {} as any,
+        permissionMap: RawPermissionMap = {} as any,
         private permissionStore: PermissionStore,
         private roleStore: RoleStore
     ) {
@@ -46,7 +48,7 @@ export default class PermissionMap {
         return privileges.map(privilegeName => {
             if (this.roleStore.hasRoleDefinition(privilegeName)) {
                 const role = this.roleStore.getRoleDefinition(privilegeName);
-                return wrapIntoObservable(role.validate());
+                return wrapIntoObservable(role.validate(this.permissionStore));
             }
 
             if (this.permissionStore.hasPermissionDefinition(privilegeName)) {
@@ -58,14 +60,14 @@ export default class PermissionMap {
         });
     }
 
-    resolveAll() {
+    resolveAll(): Observable<boolean> {
         return Observable.forkJoin(this.resolveExceptPrivilegeMap(), this.resolveOnlyPrivilegeMap())
             .map(function (result) {
                 return result.every(x => x)
             })
     }
 
-    resolveExceptPrivilegeMap() {
+    resolveExceptPrivilegeMap(): Observable<boolean> {
         const observableArr = this.resolvePrivilegesValidity(this.except);
 
         return Observable.forkJoin(observableArr)
@@ -74,7 +76,7 @@ export default class PermissionMap {
             })
     }
 
-    resolveOnlyPrivilegeMap() {
+    resolveOnlyPrivilegeMap(): Observable<boolean> {
         const observableArr = this.resolvePrivilegesValidity(this.only);
 
         return Observable.forkJoin(observableArr)
