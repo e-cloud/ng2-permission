@@ -68,6 +68,10 @@ export default class PermissionMap {
     }
 
     resolveExceptPrivilegeMap(): Observable<boolean> {
+        if(!this.except.length) {
+            return Observable.of(true)
+        }
+
         const observableArr = this.resolvePrivilegesValidity(this.except);
 
         return Observable.forkJoin(observableArr)
@@ -77,6 +81,10 @@ export default class PermissionMap {
     }
 
     resolveOnlyPrivilegeMap(): Observable<boolean> {
+        if(!this.only.length) {
+            return Observable.of(true)
+        }
+
         const observableArr = this.resolvePrivilegesValidity(this.only);
 
         return Observable.forkJoin(observableArr)

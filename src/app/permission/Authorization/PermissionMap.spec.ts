@@ -67,6 +67,36 @@ describe('PermissionMap', () => {
             })
     }))
 
+    it('should validate with empty map', async(function () {
+        let map = new PermissionMap({
+            except: []
+        }, permissionStore, roleStore)
+
+        map.resolveExceptPrivilegeMap()
+            .subscribe(function (result) {
+                expect(result).toBe(true)
+            })
+
+        map.resolveAll()
+            .subscribe(function (result) {
+                expect(result).toBe(true)
+            })
+
+        map = new PermissionMap({
+            only: []
+        }, permissionStore, roleStore)
+
+        map.resolveOnlyPrivilegeMap()
+            .subscribe(function (result) {
+                expect(result).toBe(true)
+            })
+
+        map.resolveAll()
+            .subscribe(function (result) {
+                expect(result).toBe(true)
+            })
+    }))
+
     it('should validate except', async(function () {
         const map = new PermissionMap({
             except: ['Write']
