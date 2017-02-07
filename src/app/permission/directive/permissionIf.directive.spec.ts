@@ -7,28 +7,29 @@ import RoleStore from '../stores/RoleStore'
 import PermissionStore from '../stores/PermissionStore'
 
 @Component({
-    template: `
-    <template permissionIf [permissionIfExcept]="'Read'">
-      <h2>Except</h2>
-    </template>`
+    template: `<h2 *permissionIf="perm">Show with permission</h2>`
 })
-class TestComponent {
+class TestHostComponent {
+    perm = {
+        except: 'Read'
+    }
 }
 
 describe('PermissionIfDirective', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let elemSet: DebugElement[];  // the three elements w/ the directive
+    let fixture: ComponentFixture<TestHostComponent>;
+    let elemSet: DebugElement[];
 
     let roleStore: RoleStore;
     let permissionStore: PermissionStore;
     let _read = true;
     let _write = true;
     let _delete = true;
+    let testHost: any = null;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [PermissionModule],
-            declarations: [TestComponent],
+            declarations: [TestHostComponent],
             schemas: [NO_ERRORS_SCHEMA]
         })
 
@@ -51,7 +52,7 @@ describe('PermissionIfDirective', () => {
 
         roleStore.defineRole('Admin', ['Read', 'Write', 'Delete'])
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(TestHostComponent);
     });
 
     it('should remove permissionIf elements', () => {
@@ -61,8 +62,40 @@ describe('PermissionIfDirective', () => {
         expect(elemSet.length).toBe(0);
     });
 
+    it('should remove permissionIf elements(2)', () => {
+        _write = false
+        testHost = fixture.componentInstance;
+        testHost.perm = {
+            only: 'Write'
+        }
+        fixture.detectChanges();
+        elemSet = fixture.debugElement.queryAll(By.css('h2'));
+        expect(elemSet.length).toBe(0);
+
+        testHost.perm = 'Write'
+        fixture.detectChanges();
+        elemSet = fixture.debugElement.queryAll(By.css('h2'));
+        expect(elemSet.length).toBe(0);
+    });
+
     it('should render permissionIf elements', () => {
         _read = false
+        fixture.detectChanges();
+        elemSet = fixture.debugElement.queryAll(By.css('h2'));
+        expect(elemSet.length).toBe(1);
+    });
+
+    it('should render permissionIf elements(2)', () => {
+        _read = true
+        testHost = fixture.componentInstance;
+        testHost.perm = {
+            only: 'Read'
+        }
+        fixture.detectChanges();
+        elemSet = fixture.debugElement.queryAll(By.css('h2'));
+        expect(elemSet.length).toBe(1);
+
+        testHost.perm = 'Read';
         fixture.detectChanges();
         elemSet = fixture.debugElement.queryAll(By.css('h2'));
         expect(elemSet.length).toBe(1);

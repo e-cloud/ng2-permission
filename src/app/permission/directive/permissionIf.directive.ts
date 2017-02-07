@@ -1,11 +1,11 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core'
+import { Directive, Input, TemplateRef, ViewContainerRef, OnChanges } from '@angular/core'
 import Authorization from '../Authorization/Authorization'
 import { RawPermissionMap } from '../Authorization/PermissionMap'
 
 @Directive({
     selector: '[permissionIf]'
 })
-export class PermissionIfDirective {
+export class PermissionIfDirective implements OnChanges {
     private rawMap: RawPermissionMap = {}
     private $state: boolean
 
@@ -16,16 +16,21 @@ export class PermissionIfDirective {
     ) {
     }
 
-    @Input() set permissionIfExcept(except: string|string[]) {
-        this.rawMap.except = except
-    }
-
-    @Input() set permissionIfOnly(only: string|string[]) {
-        this.rawMap.only = only
+    @Input() set permissionIf(perm: string | RawPermissionMap) {
+        if (typeof perm === 'string') {
+            this.rawMap.only = perm
+        }
+        else if (typeof perm === 'object') {
+            Object.assign(this.rawMap, perm)
+        }
+        else {
+            throw new TypeError('Invalid Input for PermissionIfDirective')
+        }
     }
 
     ngOnChanges() {
         this.authorizer.resolve(this.rawMap)
+            .takeWhile(result => result !== this.$state)
             .subscribe((result: boolean) => {
                 this.$state = result
                 this.updateView()
