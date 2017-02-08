@@ -8,9 +8,11 @@ export default class Authorization {
     constructor(private permissionStore: PermissionStore, private  roleStore: RoleStore) {
     }
 
-    resolve(rpm: RawPermissionMap) {
-        const map = new PermissionMap(rpm, this.permissionStore, this.roleStore)
+    genPermMap(rpm: RawPermissionMap) {
+        return new PermissionMap(rpm, this.permissionStore, this.roleStore)
+    }
 
+    resolve(map: PermissionMap) {
         return map.resolveAll()
     }
 }

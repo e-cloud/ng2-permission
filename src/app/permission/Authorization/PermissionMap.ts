@@ -3,7 +3,7 @@ import RoleStore from '../stores/RoleStore'
 import PermissionStore from '../stores/PermissionStore'
 import { wrapIntoObservable } from '@angular/router/src/utils/collection'
 import { Observable } from 'rxjs'
-import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/first'
 
 interface RedirectRoute {
     path: string
@@ -11,7 +11,7 @@ interface RedirectRoute {
 }
 
 interface RedirectFunc {
-    (): RedirectRoute
+    (rejectedPermissionName: string): RedirectRoute
 }
 
 type Redirection = RedirectRoute | RedirectFunc | string | {
@@ -29,6 +29,8 @@ export interface RawPermissionMap {
     redirectTo?: any
 }
 
+export type ValidateResult = [boolean, string]
+
 export default class PermissionMap {
     only: string[]
     except: string[]
@@ -44,62 +46,97 @@ export default class PermissionMap {
         this.redirectTo = normalizeRedirectToProperty(permissionMap.redirectTo);
     }
 
-    resolvePrivilegesValidity(privileges: string[]): Observable<boolean>[] {
+    resolvePrivilegesValidity(privileges: string[]): Observable<ValidateResult>[] {
         return privileges.map(privilegeName => {
             if (this.roleStore.hasRoleDefinition(privilegeName)) {
                 const role = this.roleStore.getRoleDefinition(privilegeName);
-                return wrapIntoObservable(role.validate(this.permissionStore));
+                return wrapIntoObservable(role.validate(this.permissionStore))
+                    .map(result => [result, privilegeName]);
             }
 
             if (this.permissionStore.hasPermissionDefinition(privilegeName)) {
                 const permission = this.permissionStore.getPermissionDefinition(privilegeName);
-                return wrapIntoObservable(permission.validate());
+                return wrapIntoObservable(permission.validate())
+                    .map(result => [result, privilegeName]);
             }
 
-            return wrapIntoObservable(false);
+            return wrapIntoObservable(false)
+                .map(result => [result, privilegeName]);
         });
     }
 
-    resolveAll(): Observable<boolean> {
-        return Observable.forkJoin(this.resolveExceptPrivilegeMap(), this.resolveOnlyPrivilegeMap())
-            .map(function (result) {
-                return result.every(x => x)
+    resolveAll(): Observable<ValidateResult> {
+        return this.resolveExceptPrivilegeMap()
+            .switchMap(result => {
+                // 不存在排除的权限
+                if (result[0]) {
+                    return this.resolveOnlyPrivilegeMap()
+                }
+
+                return Observable.of(result)
             })
     }
 
-    resolveExceptPrivilegeMap(): Observable<boolean> {
-        if(!this.except.length) {
-            return Observable.of(true)
+    resolveRedirect(rejectedPermissionName: string): Observable<RedirectRoute> {
+        if (!this.redirectTo) {
+            return Observable.throw(new Error('Empty redirect config.'))
+        }
+
+        const redirectFunc = this.redirectTo[rejectedPermissionName] || this.redirectTo['default'];
+
+        return wrapIntoObservable(redirectFunc(rejectedPermissionName))
+            .map(function (result) {
+                if (typeof result === 'string') {
+                    return {
+                        path: result
+                    }
+                }
+
+                if (typeof result === 'object') {
+                    return result
+                }
+
+                throw new Error('Invalid redirect config.')
+            })
+    }
+
+    resolveExceptPrivilegeMap(): Observable<ValidateResult> {
+        if (!this.except.length) {
+            return Observable.of([true, null as string])
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.except);
 
         return Observable.forkJoin(observableArr)
             .map(function (result) {
-                return !result.every(x => x)
+                // if user has any permission
+                if (!result.every(x => !x[0])) {
+                    // take those permission
+                    return [false, result.find(x => x[0])[1]]
+                }
+                return [true, null]
             })
     }
 
-    resolveOnlyPrivilegeMap(): Observable<boolean> {
-        if(!this.only.length) {
-            return Observable.of(true)
+    resolveOnlyPrivilegeMap(): Observable<ValidateResult> {
+        if (!this.only.length) {
+            return Observable.of([true, null as string])
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.only);
 
         return Observable.forkJoin(observableArr)
             .map(function (result) {
-                return result.every(x => x)
+                if (!result.every(x => x[0])) {
+                    return [false, result.find(x => !x[0])[1]]
+                }
+                return [true, null as string]
             })
     }
 }
 
 function isObjectSingleRedirectionRule(redirectTo: RedirectRoute) {
-    return _.isNil(redirectTo.path);
-}
-
-function isObjectMultipleRedirectionRule(redirectTo: Dictionary<Redirection>) {
-    return _.isNil(redirectTo['default']);
+    return !_.isNil(redirectTo.path);
 }
 
 function normalizeOnlyAndExceptProperty(property: string | string[]) {
@@ -115,6 +152,10 @@ function normalizeOnlyAndExceptProperty(property: string | string[]) {
 }
 
 function normalizeRedirectToProperty(redirectTo: Redirection) {
+    if (_.isNil(redirectTo)) {
+        return null
+    }
+
     if (typeof redirectTo === 'string') {
         return normalizeStringRedirectionRule(redirectTo);
     }
@@ -124,18 +165,14 @@ function normalizeRedirectToProperty(redirectTo: Redirection) {
             return normalizeObjectSingleRedirectionRule(redirectTo as RedirectRoute);
         }
 
-        if (isObjectMultipleRedirectionRule(redirectTo)) {
-            return normalizeObjectMultipleRedirectionRule(redirectTo);
-        }
-
-        throw new TypeError('When used "redirectTo" as object, property "default" must be defined');
+        return normalizeObjectMultipleRedirectionRule(redirectTo);
     }
 
     if (_.isFunction(redirectTo)) {
         return normalizeFunctionRedirectionRule(redirectTo);
     }
 
-    return redirectTo
+    throw new TypeError('Property "redirectTo" must be String, Function, Array or Object');
 }
 
 function normalizeStringRedirectionRule(redirectTo: string): RedirectMap {

@@ -38,14 +38,14 @@ describe('PermissionMap', () => {
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(false)
+                expect(result).toEqual([false, 'Write'])
             })
 
         _write = false
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
     }))
 
@@ -56,14 +56,14 @@ describe('PermissionMap', () => {
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(false)
+                expect(result).toEqual([false, 'Write'])
             })
 
         _write = false
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
     }))
 
@@ -74,12 +74,12 @@ describe('PermissionMap', () => {
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
 
         map = new PermissionMap({
@@ -88,12 +88,12 @@ describe('PermissionMap', () => {
 
         map.resolveOnlyPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
     }))
 
@@ -104,14 +104,14 @@ describe('PermissionMap', () => {
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(false)
+                expect(result).toEqual([false, 'Write'])
             })
 
         _write = false
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
     }))
 
@@ -122,14 +122,14 @@ describe('PermissionMap', () => {
 
         map.resolveOnlyPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
             })
 
         _write = false
 
         map.resolveOnlyPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toBe(false)
+                expect(result).toEqual([false, 'Write'])
             })
     }))
 
@@ -141,14 +141,21 @@ describe('PermissionMap', () => {
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result).toBe(false)
+                expect(result).toEqual([false, 'Read'])
             })
 
         _read = false
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result).toBe(true)
+                expect(result[0]).toBe(true)
+            })
+
+        _write = false
+
+        map.resolveAll()
+            .subscribe(function (result) {
+                expect(result).toEqual([false, 'Write'])
             })
     }))
 })
