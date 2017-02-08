@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { TestBed, ComponentFixture } from '@angular/core/testing'
-import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core'
+import { Component, DebugElement } from '@angular/core'
 import { By } from '@angular/platform-browser'
 import { PermissionModule } from '../permission.module'
 import RoleStore from '../stores/RoleStore'
@@ -29,8 +29,7 @@ describe('PermissionIfDirective', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [PermissionModule],
-            declarations: [TestHostComponent],
-            schemas: [NO_ERRORS_SCHEMA]
+            declarations: [TestHostComponent]
         })
 
         _read = true;

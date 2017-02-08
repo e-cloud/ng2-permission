@@ -29,10 +29,10 @@ export class PermissionIfDirective implements OnChanges {
     }
 
     ngOnChanges() {
-        this.authorizer.resolve(this.rawMap)
-            .takeWhile(result => result !== this.$state)
-            .subscribe((result: boolean) => {
-                this.$state = result
+        this.authorizer.resolve(this.authorizer.genPermMap(this.rawMap))
+            .takeWhile(result => result[0] !== this.$state)
+            .subscribe((result) => {
+                this.$state = result[0]
                 this.updateView()
             })
     }
