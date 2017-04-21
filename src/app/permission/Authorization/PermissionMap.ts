@@ -1,9 +1,15 @@
 import * as _ from 'lodash'
 import RoleStore from '../stores/RoleStore'
 import PermissionStore from '../stores/PermissionStore'
-import { wrapIntoObservable } from '@angular/router/src/utils/collection'
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
+import { of } from 'rxjs/observable/of'
+import { fromPromise } from 'rxjs/observable/fromPromise'
 import 'rxjs/add/operator/first'
+import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/observable/of'
+import 'rxjs/add/observable/forkJoin'
+import 'rxjs/add/observable/throw'
+import { isPromise } from 'rxjs/util/isPromise'
 
 interface RedirectRoute {
     path: string
@@ -18,7 +24,7 @@ type Redirection = RedirectRoute | RedirectFunc | string | {
     [prop: string]: RedirectRoute | RedirectFunc | string
 }
 
-type RedirectMap = {
+interface RedirectMap {
     default: RedirectFunc
     [prop: string]: RedirectFunc
 }
@@ -133,6 +139,20 @@ export default class PermissionMap {
                 return [true, null as string]
             })
     }
+}
+
+function isObservable(obj: any | Observable<any>): obj is Observable<any> {
+    return !!obj && typeof obj.subscribe === 'function';
+}
+
+export function wrapIntoObservable<T>(value: T | Promise<T> | Observable<T>): Observable<T> {
+    if (isObservable(value)) {
+        return value;
+    }
+    if (isPromise(value)) {
+        return fromPromise(value);
+    }
+    return of(value);
 }
 
 function isObjectSingleRedirectionRule(redirectTo: RedirectRoute) {

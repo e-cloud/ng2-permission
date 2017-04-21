@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
 
 export interface Validator {
     (id: string): Observable<boolean> | Promise<boolean> | boolean

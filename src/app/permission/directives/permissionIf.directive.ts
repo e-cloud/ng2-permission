@@ -1,6 +1,7 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, OnChanges } from '@angular/core'
 import Authorization from '../Authorization/Authorization'
 import { RawPermissionMap } from '../Authorization/PermissionMap'
+import 'rxjs/add/operator/takeWhile'
 
 @Directive({
     selector: '[permissionIf]'
@@ -19,11 +20,9 @@ export class PermissionIfDirective implements OnChanges {
     @Input() set permissionIf(perm: string | RawPermissionMap) {
         if (typeof perm === 'string') {
             this.rawMap.only = perm
-        }
-        else if (typeof perm === 'object') {
+        } else if (typeof perm === 'object') {
             Object.assign(this.rawMap, perm)
-        }
-        else {
+        } else {
             throw new TypeError('Invalid Input for PermissionIfDirective')
         }
     }

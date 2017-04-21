@@ -1,7 +1,7 @@
 import { Validator } from './Permission'
 import PermissionStore from '../stores/PermissionStore'
-import { Observable } from 'rxjs'
-import { wrapIntoObservable } from '@angular/router/src/utils/collection'
+import { Observable } from 'rxjs/Observable'
+import { wrapIntoObservable } from '../Authorization/PermissionMap'
 
 export default class Role {
     constructor(

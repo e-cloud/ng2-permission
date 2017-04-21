@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core'
 import Authorization from '../Authorization/Authorization'
 import { Router, ActivatedRouteSnapshot, CanActivate } from '@angular/router'
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/map'
 import { RawPermissionMap } from '../Authorization/PermissionMap'
 
 @Injectable()
@@ -12,9 +14,9 @@ export class PermissionGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
-        let data: any = route.data;
+        const data: any = route.data;
 
-        if(!data.permission) {
+        if (!data.permission) {
             return true
         }
 
