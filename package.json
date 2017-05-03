@@ -9,7 +9,8 @@
     "docs:serve": "npm run docs:build -- -s",
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "ng lint",
-    "test": "ng test"
+    "test": "ng test",
+    "release": "npm publish dist --registry=https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
