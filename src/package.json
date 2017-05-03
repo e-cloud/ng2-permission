@@ -1,0 +1,28 @@
+{
+  "name": "ng2-permission",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e-cloud/ng2-permission"
+  },
+  "author": {
+    "name": "e-cloud",
+    "email": "saintscott119@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e-cloud/ng2-permission/issues"
+  },
+  "module": "ng2-permission.js",
+  "typings": "ng2-permission.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}

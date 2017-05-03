@@ -28,7 +28,7 @@ describe('PermissionIfDirective', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [PermissionModule],
+            imports: [PermissionModule.forRoot()],
             declarations: [TestHostComponent]
         })
 
