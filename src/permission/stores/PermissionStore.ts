@@ -1,4 +1,5 @@
 import Permission, { Validator } from '../models/Permission'
+import { Dictionary } from '../../typings/index'
 
 export default class PermissionStore {
     private store: Dictionary<Permission> = {}

@@ -10,21 +10,22 @@ import 'rxjs/add/observable/of'
 import 'rxjs/add/observable/forkJoin'
 import 'rxjs/add/observable/throw'
 import { isPromise } from 'rxjs/util/isPromise'
+import { Dictionary } from '../../typings/index'
 
-interface RedirectRoute {
+export interface RedirectRoute {
     path: string
     [prop: string]: any
 }
 
-interface RedirectFunc {
+export interface RedirectFunc {
     (rejectedPermissionName: string): RedirectRoute
 }
 
-type Redirection = RedirectRoute | RedirectFunc | string | {
+export type Redirection = RedirectRoute | RedirectFunc | string | {
     [prop: string]: RedirectRoute | RedirectFunc | string
 }
 
-interface RedirectMap {
+export interface RedirectMap {
     default: RedirectFunc
     [prop: string]: RedirectFunc
 }

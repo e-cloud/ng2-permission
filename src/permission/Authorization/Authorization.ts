@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
 import PermissionStore from '../stores/PermissionStore'
 import RoleStore from '../stores/RoleStore'
-import PermissionMap, { RawPermissionMap } from './PermissionMap'
+import PermissionMap, { RawPermissionMap, ValidateResult } from './PermissionMap'
+import { Observable } from 'rxjs/Observable'
 
 @Injectable()
 export default class Authorization {
@@ -12,7 +13,7 @@ export default class Authorization {
         return new PermissionMap(rpm, this.permissionStore, this.roleStore)
     }
 
-    resolve(map: PermissionMap) {
+    resolve(map: PermissionMap): Observable<ValidateResult> {
         return map.resolveAll()
     }
 }

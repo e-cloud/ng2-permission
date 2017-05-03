@@ -1,3 +1,3 @@
-declare interface Dictionary<T> {
+export interface Dictionary<T> {
     [prop: string]: T
 }
