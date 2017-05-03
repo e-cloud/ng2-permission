@@ -1,27 +1,71 @@
 # ng2-permission
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.31.
+## Installation
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To install this library, run:
 
-## Code scaffolding
+```bash
+$ npm install ng2-permission --save
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Consuming your library
 
-## Build
+Once you have published your library to npm, you can import your library in any Angular application by running:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```bash
+$ npm install ng2-permission
+```
 
-## Running unit tests
+and then from your Angular `AppModule`:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-## Running end-to-end tests
+import { AppComponent } from './app.component';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+// Import your library
+import { PermissionModule } from 'ng2-permission';
 
-## Further help
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    // Specify your library as an import
+    LibraryModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Once your library is imported, you can use its components, directives and pipes in your Angular application:
+
+```xml
+<!-- You can now use your library component in app.component.html -->
+<h1 *permissionIf="permission">
+  {{title}}
+</h1>
+```
+
+## Development
+
+To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+
+```bash
+$ npm run build
+```
+
+To lint all `*.ts` files:
+
+```bash
+$ npm run lint
+```
+
+## License
+
+MIT © [e-cloud](mailto:saintscott119@gmail.com)
