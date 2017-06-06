@@ -7,8 +7,8 @@ import { RawPermissionMap } from '../Authorization/PermissionMap';
     selector: '[permissionIf]'
 })
 export class PermissionIfDirective implements OnChanges {
-    private rawMap: RawPermissionMap = {}
-    private $state: boolean
+    private rawMap: RawPermissionMap = {};
+    private $state: boolean;
 
     constructor(
         private templateRef: TemplateRef<any>,
@@ -17,13 +17,14 @@ export class PermissionIfDirective implements OnChanges {
     ) {
     }
 
-    @Input() set permissionIf(perm: string | RawPermissionMap) {
+    @Input()
+    set permissionIf(perm: string | RawPermissionMap) {
         if (typeof perm === 'string') {
-            this.rawMap.only = perm
+            this.rawMap.only = perm;
         } else if (typeof perm === 'object') {
-            Object.assign(this.rawMap, perm)
+            Object.assign(this.rawMap, perm);
         } else {
-            throw new TypeError('Invalid Input for PermissionIfDirective')
+            throw new TypeError('Invalid Input for PermissionIfDirective');
         }
     }
 
@@ -31,16 +32,15 @@ export class PermissionIfDirective implements OnChanges {
         this.authorizer.resolve(this.authorizer.genPermMap(this.rawMap))
             .takeWhile(result => result[0] !== this.$state)
             .subscribe((result) => {
-                this.$state = result[0]
-                this.updateView()
-            })
+                this.$state = result[0];
+                this.updateView();
+            });
     }
 
     updateView() {
         if (this.$state) {
             this.viewContainer.createEmbeddedView(this.templateRef);
-        }
-        else {
+        } else {
             this.viewContainer.clear();
         }
     }

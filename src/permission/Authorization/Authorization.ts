@@ -10,10 +10,10 @@ export class Authorization {
     }
 
     genPermMap(rpm: RawPermissionMap) {
-        return new PermissionMap(rpm, this.permissionStore, this.roleStore)
+        return new PermissionMap(rpm, this.permissionStore, this.roleStore);
     }
 
     resolve(map: PermissionMap): Observable<ValidateResult> {
-        return map.resolveAll()
+        return map.resolveAll();
     }
 }

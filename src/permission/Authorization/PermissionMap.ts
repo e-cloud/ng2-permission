@@ -14,6 +14,7 @@ import { RoleStore } from '../stores/RoleStore';
 
 export interface RedirectRoute {
     path: string
+
     [prop: string]: any
 }
 
@@ -27,6 +28,7 @@ export type Redirection = RedirectRoute | RedirectFunc | string | {
 
 export interface RedirectMap {
     default: RedirectFunc
+
     [prop: string]: RedirectFunc
 }
 
@@ -77,16 +79,16 @@ export class PermissionMap {
             .switchMap(result => {
                 // 不存在排除的权限
                 if (result[0]) {
-                    return this.resolveOnlyPrivilegeMap()
+                    return this.resolveOnlyPrivilegeMap();
                 }
 
-                return Observable.of(result)
-            })
+                return Observable.of(result);
+            });
     }
 
     resolveRedirect(rejectedPermissionName: string): Observable<RedirectRoute> {
         if (!this.redirectTo) {
-            return Observable.throw(new Error('Empty redirect config.'))
+            return Observable.throw(new Error('Empty redirect config.'));
         }
 
         const redirectFunc = this.redirectTo[rejectedPermissionName] || this.redirectTo['default'];
@@ -96,20 +98,20 @@ export class PermissionMap {
                 if (typeof result === 'string') {
                     return {
                         path: result
-                    }
+                    };
                 }
 
                 if (typeof result === 'object') {
-                    return result
+                    return result;
                 }
 
-                throw new Error('Invalid redirect config.')
-            })
+                throw new Error('Invalid redirect config.');
+            });
     }
 
     resolveExceptPrivilegeMap(): Observable<ValidateResult> {
         if (!this.except.length) {
-            return Observable.of([true, null as string])
+            return Observable.of([true, null as string]);
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.except);
@@ -119,15 +121,15 @@ export class PermissionMap {
                 // if user has any permission
                 if (!result.every(x => !x[0])) {
                     // take those permission
-                    return [false, result.find(x => x[0])[1]]
+                    return [false, result.find(x => x[0])[1]];
                 }
-                return [true, null]
-            })
+                return [true, null];
+            });
     }
 
     resolveOnlyPrivilegeMap(): Observable<ValidateResult> {
         if (!this.only.length) {
-            return Observable.of([true, null as string])
+            return Observable.of([true, null as string]);
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.only);
@@ -135,10 +137,10 @@ export class PermissionMap {
         return Observable.forkJoin(observableArr)
             .map(function (result) {
                 if (!result.every(x => x[0])) {
-                    return [false, result.find(x => !x[0])[1]]
+                    return [false, result.find(x => !x[0])[1]];
                 }
-                return [true, null as string]
-            })
+                return [true, null as string];
+            });
     }
 }
 
@@ -174,7 +176,7 @@ function normalizeOnlyAndExceptProperty(property: string | string[]) {
 
 function normalizeRedirectToProperty(redirectTo: Redirection) {
     if (_.isNil(redirectTo)) {
-        return null
+        return null;
     }
 
     if (typeof redirectTo === 'string') {

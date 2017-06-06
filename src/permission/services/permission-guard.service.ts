@@ -17,25 +17,25 @@ export class PermissionGuard implements CanActivate {
         const data: any = route.data;
 
         if (!data.permission) {
-            return true
+            return true;
         }
 
         return this.checkPermission(data.permission);
     }
 
     checkPermission(perm: RawPermissionMap) {
-        const permMap = this.authorize.genPermMap(perm)
+        const permMap = this.authorize.genPermMap(perm);
         return this.authorize.resolve(permMap)
             .do(result => {
                 if (!result[0]) {
                     permMap.resolveRedirect(result[1])
                         .subscribe(redirect => {
-                            this.router.navigate([redirect.path])
-                        }, () => {})
+                            this.router.navigate([redirect.path]);
+                        }, () => {});
                 }
             })
             .map(function (result) {
-                return result[0]
-            })
+                return result[0];
+            });
     }
 }

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable';
 
 export interface Validator {
     (id: string): Observable<boolean> | Promise<boolean> | boolean
@@ -9,6 +9,6 @@ export class Permission {
     }
 
     validate() {
-       return this.validateFn(this.name)
+        return this.validateFn(this.name);
     }
 }

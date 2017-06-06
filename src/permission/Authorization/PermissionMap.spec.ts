@@ -15,147 +15,147 @@ describe('PermissionMap', () => {
         _write = true;
         _delete = true;
 
-        permissionStore = new PermissionStore()
+        permissionStore = new PermissionStore();
         permissionStore.definePermission('Read', function () {
-            return _read
-        })
+            return _read;
+        });
         permissionStore.definePermission('Write', function () {
-            return _write
-        })
+            return _write;
+        });
         permissionStore.definePermission('Delete', function () {
-            return _delete
-        })
+            return _delete;
+        });
 
-        roleStore = new RoleStore()
+        roleStore = new RoleStore();
 
-        roleStore.defineRole('Admin', ['Read', 'Write', 'Delete'])
-    })
+        roleStore.defineRole('Admin', ['Read', 'Write', 'Delete']);
+    });
 
     it('should create from string', async(function () {
         const map = new PermissionMap({
             except: 'Write'
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toEqual([false, 'Write'])
-            })
+                expect(result).toEqual([false, 'Write']);
+            });
 
-        _write = false
+        _write = false;
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
-    }))
+                expect(result[0]).toBe(true);
+            });
+    }));
 
     it('should create from string array', async(function () {
         const map = new PermissionMap({
             except: ['Write']
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toEqual([false, 'Write'])
-            })
+                expect(result).toEqual([false, 'Write']);
+            });
 
-        _write = false
+        _write = false;
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
-    }))
+                expect(result[0]).toBe(true);
+            });
+    }));
 
     it('should validate with empty map', async(function () {
         let map = new PermissionMap({
             except: []
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
+                expect(result[0]).toBe(true);
+            });
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
+                expect(result[0]).toBe(true);
+            });
 
         map = new PermissionMap({
             only: []
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveOnlyPrivilegeMap()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
+                expect(result[0]).toBe(true);
+            });
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
-    }))
+                expect(result[0]).toBe(true);
+            });
+    }));
 
     it('should validate except', async(function () {
         const map = new PermissionMap({
             except: ['Write']
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toEqual([false, 'Write'])
-            })
+                expect(result).toEqual([false, 'Write']);
+            });
 
-        _write = false
+        _write = false;
 
         map.resolveExceptPrivilegeMap()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
-    }))
+                expect(result[0]).toBe(true);
+            });
+    }));
 
     it('should validate only', async(function () {
         const map = new PermissionMap({
             only: ['Write']
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveOnlyPrivilegeMap()
             .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
+                expect(result[0]).toBe(true);
+            });
 
-        _write = false
+        _write = false;
 
         map.resolveOnlyPrivilegeMap()
             .subscribe(function (result) {
-                expect(result).toEqual([false, 'Write'])
-            })
-    }))
+                expect(result).toEqual([false, 'Write']);
+            });
+    }));
 
     it('should validate except and only both', async(function () {
         const map = new PermissionMap({
             except: ['Read'],
             only: ['Write']
-        }, permissionStore, roleStore)
+        }, permissionStore, roleStore);
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result).toEqual([false, 'Read'])
-            })
+                expect(result).toEqual([false, 'Read']);
+            });
 
-        _read = false
-
-        map.resolveAll()
-            .subscribe(function (result) {
-                expect(result[0]).toBe(true)
-            })
-
-        _write = false
+        _read = false;
 
         map.resolveAll()
             .subscribe(function (result) {
-                expect(result).toEqual([false, 'Write'])
-            })
-    }))
-})
+                expect(result[0]).toBe(true);
+            });
+
+        _write = false;
+
+        map.resolveAll()
+            .subscribe(function (result) {
+                expect(result).toEqual([false, 'Write']);
+            });
+    }));
+});

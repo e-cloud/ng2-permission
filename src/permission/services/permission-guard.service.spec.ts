@@ -11,8 +11,8 @@ import { PermissionGuard } from './permission-guard.service';
 
 @Component({
     template: `
-    <router-outlet></router-outlet>
-  `
+        <router-outlet></router-outlet>
+    `
 })
 class RoutingComponent {
 }
@@ -64,18 +64,18 @@ describe('PermissionGuard', () => {
         _accessHome = false;
         _suspect = false;
 
-        permissionStore = TestBed.get(PermissionStore)
+        permissionStore = TestBed.get(PermissionStore);
         permissionStore.definePermission('AccessHome', function () {
-            return _accessHome
-        })
+            return _accessHome;
+        });
 
         permissionStore.definePermission('Suspect', function () {
-            return _suspect
-        })
+            return _suspect;
+        });
 
-        roleStore = TestBed.get(RoleStore)
+        roleStore = TestBed.get(RoleStore);
 
-        roleStore.defineRole('Admin', ['AccessHome'])
+        roleStore.defineRole('Admin', ['AccessHome']);
 
         fixture = TestBed.createComponent(RoutingComponent);
     });
@@ -83,7 +83,7 @@ describe('PermissionGuard', () => {
     beforeEach(async(inject([Router, Location], (_router: Router, _location: Location) => {
         location = _location;
         router = _router;
-        return router.navigate(['/login'])
+        return router.navigate(['/login']);
     })));
 
     it('should not route to home without permission', async(() => {
@@ -93,15 +93,15 @@ describe('PermissionGuard', () => {
     }));
 
     it('should route to home with permission', async(() => {
-        _accessHome = true
+        _accessHome = true;
         router.navigate(['/home']).then(() => {
             expect(location.path()).toBe('/home');
         });
     }));
 
     it('should route to home with more permissions', async(() => {
-        _accessHome = true
-        _suspect = true
+        _accessHome = true;
+        _suspect = true;
         router.navigate(['/home']).then(() => {
             expect(location.path()).toBe('/login');
         });
