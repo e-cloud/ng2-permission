@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/e-cloud/ng2-permission/compare/v0.2.0...v0.3.0) (2017-06-06)
+
+
+### Bug Fixes
+
+* **module-export:** remove default exports ([c5f20ae](https://github.com/e-cloud/ng2-permission/commit/c5f20ae))
+
+
+### BREAKING CHANGES
+
+* **module-export:** we drop default export for aot and better types reference
+
+
+
 <a name="0.2.0"></a>
 # 0.2.0 (2017-05-03)
 
