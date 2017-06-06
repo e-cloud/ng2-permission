@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-variable */
-import { TestBed, inject, ComponentFixture, async } from '@angular/core/testing'
-import { Location } from '@angular/common'
-import { PermissionGuard } from './permission-guard.service'
-import { Component } from '@angular/core'
-import { Router } from '@angular/router'
-import { RouterTestingModule } from '@angular/router/testing'
-import RoleStore from '../stores/RoleStore'
-import PermissionStore from '../stores/PermissionStore'
-import { PermissionModule } from '../permission.module'
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { PermissionModule } from '../permission.module';
+import { PermissionStore } from '../stores/PermissionStore';
+import { RoleStore } from '../stores/RoleStore';
+import { PermissionGuard } from './permission-guard.service';
 
 @Component({
     template: `

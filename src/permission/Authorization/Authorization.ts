@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core'
-import PermissionStore from '../stores/PermissionStore'
-import RoleStore from '../stores/RoleStore'
-import PermissionMap, { RawPermissionMap, ValidateResult } from './PermissionMap'
-import { Observable } from 'rxjs/Observable'
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { PermissionStore } from '../stores/PermissionStore';
+import { RoleStore } from '../stores/RoleStore';
+import { PermissionMap, RawPermissionMap, ValidateResult } from './PermissionMap';
 
 @Injectable()
-export default class Authorization {
+export class Authorization {
     constructor(private permissionStore: PermissionStore, private  roleStore: RoleStore) {
     }
 

@@ -1,8 +1,8 @@
-import Permission, { Validator } from '../models/Permission'
-import { Dictionary } from '../../typings/index'
+import { Dictionary } from '../../typings';
+import { Permission, Validator } from '../models/Permission';
 
-export default class PermissionStore {
-    private store: Dictionary<Permission> = {}
+export class PermissionStore {
+    private store: Dictionary<Permission> = {};
 
     definePermission(permissionName: string, validateFn: Validator) {
         this.store[permissionName] = new Permission(permissionName, validateFn)

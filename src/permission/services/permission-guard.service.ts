@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core'
-import Authorization from '../Authorization/Authorization'
-import { Router, ActivatedRouteSnapshot, CanActivate } from '@angular/router'
-import { Observable } from 'rxjs/Observable'
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/map'
-import { RawPermissionMap } from '../Authorization/PermissionMap'
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { Authorization } from '../Authorization/Authorization';
+import { RawPermissionMap } from '../Authorization/PermissionMap';
 
 @Injectable()
 export class PermissionGuard implements CanActivate {

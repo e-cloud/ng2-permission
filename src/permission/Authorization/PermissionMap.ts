@@ -1,16 +1,16 @@
-import * as _ from 'lodash'
-import RoleStore from '../stores/RoleStore'
-import PermissionStore from '../stores/PermissionStore'
-import { Observable } from 'rxjs/Observable'
-import { of } from 'rxjs/observable/of'
-import { fromPromise } from 'rxjs/observable/fromPromise'
-import 'rxjs/add/operator/first'
-import 'rxjs/add/operator/switchMap'
-import 'rxjs/add/observable/of'
-import 'rxjs/add/observable/forkJoin'
-import 'rxjs/add/observable/throw'
-import { isPromise } from 'rxjs/util/isPromise'
-import { Dictionary } from '../../typings/index'
+import * as _ from 'lodash';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+import { of } from 'rxjs/observable/of';
+import { isPromise } from 'rxjs/util/isPromise';
+import { Dictionary } from '../../typings';
+import { PermissionStore } from '../stores/PermissionStore';
+import { RoleStore } from '../stores/RoleStore';
 
 export interface RedirectRoute {
     path: string
@@ -38,10 +38,10 @@ export interface RawPermissionMap {
 
 export type ValidateResult = [boolean, string]
 
-export default class PermissionMap {
-    only: string[]
-    except: string[]
-    redirectTo: RedirectMap
+export class PermissionMap {
+    only: string[];
+    except: string[];
+    redirectTo: RedirectMap;
 
     constructor(
         permissionMap: RawPermissionMap = {} as any,

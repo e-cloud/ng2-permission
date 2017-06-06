@@ -1,9 +1,9 @@
-import { Validator } from '../models/Permission'
-import Role from '../models/Role'
-import { Dictionary } from '../../typings/index'
+import { Dictionary } from '../../typings';
+import { Validator } from '../models/Permission';
+import { Role } from '../models/Role';
 
-export default class RoleStore {
-    private store: Dictionary<Role> = {}
+export class RoleStore {
+    private store: Dictionary<Role> = {};
 
     defineRole(roleName: string, validateFn: Validator | string[]) {
         this.store[roleName] = new Role(roleName, validateFn)

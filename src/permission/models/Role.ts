@@ -1,9 +1,9 @@
-import { Validator } from './Permission'
-import PermissionStore from '../stores/PermissionStore'
-import { Observable } from 'rxjs/Observable'
-import { wrapIntoObservable } from '../Authorization/PermissionMap'
+import { Observable } from 'rxjs/Observable';
+import { wrapIntoObservable } from '../Authorization/PermissionMap';
+import { PermissionStore } from '../stores/PermissionStore';
+import { Validator } from './Permission';
 
-export default class Role {
+export class Role {
     constructor(
         private name: string,
         private validateFn: Validator | string[]

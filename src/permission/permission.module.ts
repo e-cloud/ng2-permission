@@ -1,12 +1,11 @@
-import { ModuleWithProviders, NgModule } from '@angular/core'
-import RoleStore from './stores/RoleStore'
-import PermissionStore from './stores/PermissionStore'
-import { PermissionIfDirective } from './directives/permissionIf.directive'
-import Authorization from './Authorization/Authorization'
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { Authorization } from './Authorization/Authorization';
+import { PermissionIfDirective } from './directives/permissionIf.directive';
+import { PermissionStore } from './stores/PermissionStore';
+import { RoleStore } from './stores/RoleStore';
 
 @NgModule({
-    imports: [
-    ],
+    imports: [],
     declarations: [
         PermissionIfDirective
     ],

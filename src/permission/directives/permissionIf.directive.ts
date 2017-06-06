@@ -1,7 +1,7 @@
-import { Directive, Input, TemplateRef, ViewContainerRef, OnChanges } from '@angular/core'
-import Authorization from '../Authorization/Authorization'
-import { RawPermissionMap } from '../Authorization/PermissionMap'
-import 'rxjs/add/operator/takeWhile'
+import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import 'rxjs/add/operator/takeWhile';
+import { Authorization } from '../Authorization/Authorization';
+import { RawPermissionMap } from '../Authorization/PermissionMap';
 
 @Directive({
     selector: '[permissionIf]'

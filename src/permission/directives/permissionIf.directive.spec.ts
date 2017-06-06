@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-variable */
-import { TestBed, ComponentFixture } from '@angular/core/testing'
-import { Component, DebugElement } from '@angular/core'
-import { By } from '@angular/platform-browser'
-import { PermissionModule } from '../permission.module'
-import RoleStore from '../stores/RoleStore'
-import PermissionStore from '../stores/PermissionStore'
+import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { PermissionModule } from '../permission.module';
+import { PermissionStore } from '../stores/PermissionStore';
+import { RoleStore } from '../stores/RoleStore';
 
 @Component({
     template: `<h2 *permissionIf="perm">Show with permission</h2>`

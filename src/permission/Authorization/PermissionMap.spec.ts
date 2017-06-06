@@ -1,7 +1,7 @@
-import PermissionMap from './PermissionMap'
-import RoleStore from '../stores/RoleStore'
-import PermissionStore from '../stores/PermissionStore'
-import { async } from '@angular/core/testing'
+import { async } from '@angular/core/testing';
+import { PermissionStore } from '../stores/PermissionStore';
+import { RoleStore } from '../stores/RoleStore';
+import { PermissionMap } from './PermissionMap';
 
 describe('PermissionMap', () => {
     let roleStore: RoleStore;
