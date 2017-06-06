@@ -10,7 +10,8 @@
     "docs:watch": "npm run docs:build -- -s -w",
     "lint": "ng lint",
     "test": "ng test",
-    "release": "npm publish dist --registry=https://registry.npmjs.org/"
+    "release": "standard-version -a",
+    "deploy": "npm run build && npm publish dist --registry=https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
@@ -60,6 +61,7 @@
     "rollup": "^0.41.6",
     "run-sequence": "^1.2.2",
     "rxjs": "^5.1.0",
+    "standard-version": "^4.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0",
