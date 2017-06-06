@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { PermissionModule } from '../permission/permission.module';
+import { DefinePermissionsAndRolesService } from './define-permissions-and-roles.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,12 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PermissionModule.forRoot()
   ],
-  providers: [],
+  providers: [
+      DefinePermissionsAndRolesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
