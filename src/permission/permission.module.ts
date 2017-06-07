@@ -4,13 +4,15 @@ import { PermissionIfDirective } from './directives/permissionIf.directive';
 import { PermissionStore } from './stores/PermissionStore';
 import { RoleStore } from './stores/RoleStore';
 
+import './rxjs-extension'
+
 @NgModule({
     imports: [],
     declarations: [
-        PermissionIfDirective
+        PermissionIfDirective,
     ],
     exports: [
-        PermissionIfDirective
+        PermissionIfDirective,
     ]
 })
 export class PermissionModule {
@@ -20,7 +22,7 @@ export class PermissionModule {
             providers: [
                 Authorization,
                 PermissionStore,
-                RoleStore
+                RoleStore,
             ]
         };
     }

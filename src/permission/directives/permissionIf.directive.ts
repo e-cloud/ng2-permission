@@ -1,5 +1,4 @@
 import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
-import 'rxjs/add/operator/takeWhile';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
 
