@@ -16,4 +16,8 @@ export class Authorization {
     resolve(map: PermissionMap): Observable<ValidateResult> {
         return map.resolveAll();
     }
+
+    onChanges() {
+        return Observable.zip(this.permissionStore.getChanges(), this.roleStore.getChanges());
+    }
 }

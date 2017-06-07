@@ -1,11 +1,11 @@
-import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnChanges, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
 
 @Directive({
     selector: '[permissionIf]'
 })
-export class PermissionIfDirective implements OnChanges {
+export class PermissionIfDirective implements OnInit, OnChanges {
     private rawMap: RawPermissionMap = {};
     private $state: boolean;
 
@@ -27,7 +27,19 @@ export class PermissionIfDirective implements OnChanges {
         }
     }
 
+    ngOnInit() {
+        this.authorizer.onChanges()
+            .debounceTime(250)
+            .subscribe(() => {
+                this.check();
+            });
+    }
+
     ngOnChanges() {
+        this.check();
+    }
+
+    check() {
         this.authorizer.resolve(this.authorizer.genPermMap(this.rawMap))
             .takeWhile(result => result[0] !== this.$state)
             .subscribe((result) => {

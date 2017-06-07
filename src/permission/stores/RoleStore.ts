@@ -1,12 +1,16 @@
-import { Dictionary } from '../../typings';
+import { Subject } from 'rxjs/Subject';
 import { Validator } from '../models/Permission';
 import { Role } from '../models/Role';
+import { Dictionary } from '../../typings';
+import { Observable } from 'rxjs/Observable';
 
 export class RoleStore {
     private store: Dictionary<Role> = {};
+    private eventer$ = new Subject<string>();
 
     defineRole(roleName: string, validateFn: Validator | string[]) {
         this.store[roleName] = new Role(roleName, validateFn);
+        this.eventer$.next();
     }
 
     defineRoles(roleNames: string[], validateFn: Validator) {
@@ -15,6 +19,7 @@ export class RoleStore {
 
     removeRoleDefinition(roleName: string) {
         delete this.store[roleName];
+        this.eventer$.next();
     }
 
     hasRoleDefinition(roleName: string) {
@@ -31,5 +36,10 @@ export class RoleStore {
 
     clearStore() {
         this.store = {};
+        this.eventer$.next();
+    }
+
+    getChanges(): Observable<any> {
+        return this.eventer$.asObservable();
     }
 }

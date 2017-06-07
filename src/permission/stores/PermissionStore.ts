@@ -1,11 +1,15 @@
-import { Dictionary } from '../../typings';
+import { Subject } from 'rxjs/Subject'
 import { Permission, Validator } from '../models/Permission';
+import { Dictionary } from '../../typings';
+import { Observable } from 'rxjs/Observable';
 
 export class PermissionStore {
     private store: Dictionary<Permission> = {};
+    private eventer$ = new Subject<string>();
 
     definePermission(permissionName: string, validateFn: Validator) {
         this.store[permissionName] = new Permission(permissionName, validateFn);
+        this.eventer$.next();
     }
 
     definePermissions(permissionNames: string[], validateFn: Validator) {
@@ -14,6 +18,7 @@ export class PermissionStore {
 
     removePermissionDefinition(permissionName: string) {
         delete this.store[permissionName];
+        this.eventer$.next();
     }
 
     hasPermissionDefinition(permissionName: string) {
@@ -30,5 +35,10 @@ export class PermissionStore {
 
     clearStore() {
         this.store = {};
+        this.eventer$.next();
+    }
+
+    getChanges(): Observable<any> {
+        return this.eventer$.asObservable();
     }
 }

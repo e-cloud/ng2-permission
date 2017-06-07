@@ -3,9 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { of } from 'rxjs/observable/of';
 import { isPromise } from 'rxjs/util/isPromise';
-import { Dictionary } from '../../typings';
 import { PermissionStore } from '../stores/PermissionStore';
 import { RoleStore } from '../stores/RoleStore';
+import { Dictionary } from '../../typings';
 
 export interface RedirectRoute {
     path: string
