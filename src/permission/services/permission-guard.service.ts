@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Authorization } from '../Authorization/Authorization';
-import { RawPermissionMap } from '../Authorization/PermissionMap';
+import { RawPermissionMap, wrapIntoObservable } from '../Authorization/PermissionMap';
 
 @Injectable()
 export class PermissionGuard implements CanActivate {
@@ -24,16 +24,18 @@ export class PermissionGuard implements CanActivate {
     checkPermission(perm: RawPermissionMap) {
         const permMap = this.authorize.genPermMap(perm);
         return this.authorize.resolve(permMap)
-            .do(result => {
-                if (!result[0]) {
-                    permMap.resolveRedirect(result[1])
-                        .subscribe(redirect => {
+            .switchMap((result) => {
+                if (!result[0] && permMap.redirectTo) {
+                    return permMap.resolveRedirect(result[1])
+                        .take(1)
+                        .map(redirect => {
                             this.router.navigate([redirect.path]);
-                        }, () => {});
+
+                            return false;
+                        });
                 }
-            })
-            .map(function (result) {
-                return result[0];
+
+                return wrapIntoObservable(result[0]);
             });
     }
 }

@@ -14,19 +14,25 @@ import { PermissionGuard } from './permission-guard.service';
         <router-outlet></router-outlet>
     `
 })
-class RoutingComponent {
+export class RoutingComponent {
 }
 
 @Component({
     template: 'Test Component'
 })
-class HomeComponent {
+export class HomeComponent {
+}
+
+@Component({
+    template: '404 Component'
+})
+export class PageNotFoundComponent {
 }
 
 @Component({
     template: 'Test Login'
 })
-class LoginComponent {
+export class LoginComponent {
 }
 
 describe('PermissionGuard', () => {
@@ -44,6 +50,7 @@ describe('PermissionGuard', () => {
                 PermissionModule.forRoot(),
                 RouterTestingModule.withRoutes([
                     { path: 'login', component: LoginComponent },
+                    { path: '404', component: PageNotFoundComponent },
                     {
                         path: 'home',
                         canActivate: [PermissionGuard],
@@ -54,11 +61,28 @@ describe('PermissionGuard', () => {
                                 except: 'Suspect'
                             }
                         }
+                    },
+                    {
+                        path: 'home2',
+                        canActivate: [PermissionGuard],
+                        component: HomeComponent,
+                        data: {
+                            permission: {
+                                only: 'Admin',
+                                except: 'Suspect',
+                                redirectTo: '/404'
+                            }
+                        }
                     }
                 ])
             ],
             providers: [PermissionGuard],
-            declarations: [RoutingComponent, HomeComponent, LoginComponent]
+            declarations: [
+                RoutingComponent,
+                HomeComponent,
+                LoginComponent,
+                PageNotFoundComponent
+            ]
         });
 
         _accessHome = false;
@@ -99,11 +123,21 @@ describe('PermissionGuard', () => {
         });
     }));
 
-    it('should route to home with more permissions', async(() => {
+    it('should route to login without enough permissions', async(() => {
         _accessHome = true;
         _suspect = true;
         router.navigate(['/home']).then(() => {
             expect(location.path()).toBe('/login');
+        });
+    }));
+
+    it('should route to 404 with redirect config', async(() => {
+        _accessHome = true;
+        _suspect = true;
+        router.navigate(['/home2']).then(() => {
+            setTimeout(function () {
+                expect(location.path()).toBe('/404');
+            });
         });
     }));
 });
