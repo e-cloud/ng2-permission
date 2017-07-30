@@ -1,11 +1,11 @@
-import * as _ from 'lodash';
+import { each, isFunction, isNil } from 'lodash-es';
 import { Observable } from 'rxjs/Observable';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { of } from 'rxjs/observable/of';
 import { isPromise } from 'rxjs/util/isPromise';
+import { Dictionary } from '../../typings';
 import { PermissionStore } from '../stores/PermissionStore';
 import { RoleStore } from '../stores/RoleStore';
-import { Dictionary } from '../../typings';
 
 export interface RedirectRoute {
     path: string
@@ -154,7 +154,7 @@ export function wrapIntoObservable<T>(value: T | Promise<T> | Observable<T>): Ob
 }
 
 function isObjectSingleRedirectionRule(redirectTo: RedirectRoute) {
-    return !_.isNil(redirectTo.path);
+    return !isNil(redirectTo.path);
 }
 
 function normalizeOnlyAndExceptProperty(property: string | string[]) {
@@ -170,7 +170,7 @@ function normalizeOnlyAndExceptProperty(property: string | string[]) {
 }
 
 function normalizeRedirectToProperty(redirectTo: Redirection) {
-    if (_.isNil(redirectTo)) {
+    if (isNil(redirectTo)) {
         return null;
     }
 
@@ -186,7 +186,7 @@ function normalizeRedirectToProperty(redirectTo: Redirection) {
         return normalizeObjectMultipleRedirectionRule(redirectTo);
     }
 
-    if (_.isFunction(redirectTo)) {
+    if (isFunction(redirectTo)) {
         return normalizeFunctionRedirectionRule(redirectTo);
     }
 
@@ -210,7 +210,7 @@ function normalizeObjectSingleRedirectionRule(redirectTo: RedirectRoute): Redire
 function normalizeObjectMultipleRedirectionRule(redirectTo: Dictionary<Redirection>) {
     const redirectionMap = {} as RedirectMap;
 
-    _.forEach(redirectTo, (redirection: Redirection, permission: string) => {
+    each(redirectTo, (redirection: Redirection, permission: string) => {
         if (typeof redirection === 'function') {
             redirectionMap[permission] = redirection;
         }
