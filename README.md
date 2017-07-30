@@ -10,10 +10,7 @@ This library is for angular 2+. Its implementation is inspired by [angular-permi
 * route guard(only for `@angular/router`)
 * directive to control element's existence
 * central store to host ACL(access control list)
-
-## Todos(Maybe)
-
-* [] define async permission pipes
+* async permission pipes to use with `ngIf`
 
 ## Installation
 
@@ -104,10 +101,21 @@ Once the library is imported, you can use its components, directives and pipes i
 
 ```html
 <!-- permission ia a string(or RawPermissionMap) variable representing a permission or role -->
-<h1 *permissionIf="permission">
+<h1 *permissionIf="permVar">
+  {{title}}
+</h1>
+
+### Pipe
+Once the library is imported, you can use its components, directives and pipes in your Angular application:
+
+```html
+<!-- permission ia a string(or RawPermissionMap) variable representing a permission or role -->
+<h1 *ngIf="permVar | permission | async">
   {{title}}
 </h1>
 ```
+
+> Note: permission pipe doesn't support `redirectTo` config if it's used with object map. Because it doesn't make sense.
 
 ## Development
 
