@@ -17,6 +17,10 @@ export class Authorization {
         return map.resolveAll();
     }
 
+    resolveRaw(map: RawPermissionMap) {
+        return this.resolve(this.genPermMap(map));
+    }
+
     onChanges() {
         return Observable.zip(this.permissionStore.getChanges(), this.roleStore.getChanges());
     }
