@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/e-cloud/ng2-permission/compare/v0.4.0...v0.5.0) (2017-07-30)
+
+
+### Bug Fixes
+
+* **permission-guard:** make sure redirectTo work as expected ([83cebef](https://github.com/e-cloud/ng2-permission/commit/83cebef))
+
+
+### Features
+
+* **dep:** use lodash-es instead of lodash to support tree shaking ([6589f5e](https://github.com/e-cloud/ng2-permission/commit/6589f5e))
+* **permission-pipe:** add a  pipe to use aside with external condition ([e5dfb6d](https://github.com/e-cloud/ng2-permission/commit/e5dfb6d))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/e-cloud/ng2-permission/compare/v0.3.0...v0.4.0) (2017-06-07)
 
