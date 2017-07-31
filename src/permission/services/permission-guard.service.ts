@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap, wrapIntoObservable } from '../Authorization/PermissionMap';
+import { getRawMap } from '../utils';
 
 @Injectable()
-export class PermissionGuard implements CanActivate {
+export class PermissionGuard implements CanActivate, CanActivateChild {
 
     constructor(private authorize: Authorization, private router: Router) { }
 
@@ -21,8 +22,12 @@ export class PermissionGuard implements CanActivate {
         return this.checkPermission(data.permission);
     }
 
-    checkPermission(perm: RawPermissionMap) {
-        const permMap = this.authorize.genPermMap(perm);
+    canActivateChild(route: ActivatedRouteSnapshot) {
+        return this.canActivate(route);
+    }
+
+    checkPermission(perm: string | RawPermissionMap) {
+        const permMap = this.authorize.genPermMap(getRawMap(perm));
         return this.authorize.resolve(permMap)
             .switchMap((result) => {
                 if (!result[0] && permMap.redirectTo) {
