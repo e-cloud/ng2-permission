@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Authorization } from './Authorization/Authorization';
 import { PermissionIfDirective } from './directives/permissionIf.directive';
 import { PermissionPipe } from './pipes/permission.pipe';
+import { PermissionGuard } from './services/permission-guard.service';
 import { PermissionStore } from './stores/PermissionStore';
 import { RoleStore } from './stores/RoleStore';
 
@@ -23,6 +24,7 @@ export class PermissionModule {
         return {
             ngModule: PermissionModule,
             providers: [
+                PermissionGuard,
                 Authorization,
                 PermissionStore,
                 RoleStore,
