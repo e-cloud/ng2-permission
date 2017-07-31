@@ -2,6 +2,7 @@ import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
+import { getRawMap } from '../utils';
 
 @Pipe({
     name: 'permission',
@@ -21,7 +22,7 @@ export class PermissionPipe implements OnDestroy, PipeTransform {
 
     transform(value: string | RawPermissionMap): any {
         if (value !== this.lastInput) {
-            this.authorizer.resolveRaw(this.getRawMap(value))
+            this.authorizer.resolveRaw({ ...getRawMap(value), redirectTo: null })
                 .take(1)
                 .subscribe((result) => {
                     this.permission$.next(result[0]);
@@ -31,22 +32,6 @@ export class PermissionPipe implements OnDestroy, PipeTransform {
         this.lastInput = value;
 
         return this.permission$;
-    }
-
-    private getRawMap(perm: string | RawPermissionMap) {
-        const rawMap: RawPermissionMap = {};
-
-        if (typeof perm === 'string') {
-            rawMap.only = perm;
-        } else if (typeof perm === 'object') {
-            Object.assign(rawMap, perm, {
-                redirectTo: null
-            });
-        } else {
-            throw new TypeError('Invalid Input for PermissionIfDirective');
-        }
-
-        return rawMap;
     }
 
 }

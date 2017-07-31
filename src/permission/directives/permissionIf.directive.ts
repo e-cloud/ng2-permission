@@ -1,6 +1,7 @@
 import { Directive, Input, OnChanges, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
+import { getRawMap } from '../utils';
 
 @Directive({
     selector: '[permissionIf]'
@@ -18,13 +19,7 @@ export class PermissionIfDirective implements OnInit, OnChanges {
 
     @Input()
     set permissionIf(perm: string | RawPermissionMap) {
-        if (typeof perm === 'string') {
-            this.rawMap.only = perm;
-        } else if (typeof perm === 'object') {
-            Object.assign(this.rawMap, perm);
-        } else {
-            throw new TypeError('Invalid Input for PermissionIfDirective');
-        }
+        this.rawMap = getRawMap(perm);
     }
 
     ngOnInit() {
