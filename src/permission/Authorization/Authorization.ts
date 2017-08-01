@@ -22,6 +22,6 @@ export class Authorization {
     }
 
     onChanges() {
-        return Observable.zip(this.permissionStore.getChanges(), this.roleStore.getChanges());
+        return Observable.merge(this.permissionStore.getChanges(), this.roleStore.getChanges());
     }
 }

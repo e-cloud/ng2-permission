@@ -1,8 +1,8 @@
 // static
 import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
-import 'rxjs/add/observable/zip';
 
 // instance
 import 'rxjs/add/operator/debounceTime';
