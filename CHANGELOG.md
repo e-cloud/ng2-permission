@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/e-cloud/ng2-permission/compare/v0.6.1...v0.6.2) (2017-08-01)
+
+
+### Bug Fixes
+
+* **authorization:** use merge to properly emit any update ([e9fde6b](https://github.com/e-cloud/ng2-permission/commit/e9fde6b))
+* **index:** export permission pipe for proper aot ([40a2a48](https://github.com/e-cloud/ng2-permission/commit/40a2a48))
+* **permission-pipe:** keep data updated from store changes ([688c53f](https://github.com/e-cloud/ng2-permission/commit/688c53f))
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/e-cloud/ng2-permission/compare/v0.6.0...v0.6.1) (2017-08-01)
 
