@@ -55,17 +55,17 @@ export class PermissionMap {
             if (this.roleStore.hasRoleDefinition(privilegeName)) {
                 const role = this.roleStore.getRoleDefinition(privilegeName);
                 return wrapIntoObservable(role.validate(this.permissionStore))
-                    .map(result => [result, privilegeName]);
+                    .map(result => [result, privilegeName] as ValidateResult);
             }
 
             if (this.permissionStore.hasPermissionDefinition(privilegeName)) {
                 const permission = this.permissionStore.getPermissionDefinition(privilegeName);
                 return wrapIntoObservable(permission.validate())
-                    .map(result => [result, privilegeName]);
+                    .map(result => [result, privilegeName] as ValidateResult);
             }
 
             return wrapIntoObservable(false)
-                .map(result => [result, privilegeName]);
+                .map(result => [result, privilegeName] as ValidateResult);
         });
     }
 
@@ -106,7 +106,7 @@ export class PermissionMap {
 
     resolveExceptPrivilegeMap(): Observable<ValidateResult> {
         if (!this.except.length) {
-            return Observable.of([true, null as string]);
+            return Observable.of([true, null] as ValidateResult);
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.except);
@@ -116,15 +116,15 @@ export class PermissionMap {
                 // if user has any permission
                 if (!result.every(x => !x[0])) {
                     // take those permission
-                    return [false, result.find(x => x[0])[1]];
+                    return [false, result.find(x => x[0])[1]] as ValidateResult;
                 }
-                return [true, null];
+                return [true, null] as ValidateResult;
             });
     }
 
     resolveOnlyPrivilegeMap(): Observable<ValidateResult> {
         if (!this.only.length) {
-            return Observable.of([true, null as string]);
+            return Observable.of([true, null] as ValidateResult);
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.only);
@@ -132,9 +132,9 @@ export class PermissionMap {
         return Observable.forkJoin(observableArr)
             .map(function (result) {
                 if (!result.every(x => x[0])) {
-                    return [false, result.find(x => !x[0])[1]];
+                    return [false, result.find(x => !x[0])[1]] as ValidateResult;
                 }
-                return [true, null as string];
+                return [true, null] as ValidateResult;
             });
     }
 }
