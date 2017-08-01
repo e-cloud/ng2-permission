@@ -17,7 +17,9 @@ export class PermissionPipe implements OnDestroy, PipeTransform {
     constructor(private authorizer: Authorization) {
         this.permissionChanges$ = this.authorizer.onChanges()
             .subscribe(() => {
-                this.checkPermission(this.lastInput);
+                if (this.lastInput) {
+                    this.checkPermission(this.lastInput);
+                }
             });
     }
 
