@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/e-cloud/ng2-permission/compare/v0.5.2...v0.6.0) (2017-08-01)
+
+
+### Bug Fixes
+
+* **deps:** sync dependencies to product package.json ([a9ff85b](https://github.com/e-cloud/ng2-permission/commit/a9ff85b))
+* **types:** improve types to compatible with ts 2.4 ([7b6763e](https://github.com/e-cloud/ng2-permission/commit/7b6763e))
+
+
+### Features
+
+* **guard:** provide a way to notify rejected route navigation ([820bbb3](https://github.com/e-cloud/ng2-permission/commit/820bbb3))
+* **permissionIf:** improve and add tests for permissionIf ([32f2f0e](https://github.com/e-cloud/ng2-permission/commit/32f2f0e))
+* **permissionIf:** support then & else block, and external condition ([107f235](https://github.com/e-cloud/ng2-permission/commit/107f235))
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/e-cloud/ng2-permission/compare/v0.5.1...v0.5.2) (2017-07-31)
 
