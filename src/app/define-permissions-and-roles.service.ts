@@ -8,15 +8,21 @@ export class DefinePermissionsAndRolesService {
 
     init() {
         this.permissionStore.definePermission('Read', function () {
-            return true;
+            return false;
         });
         this.permissionStore.definePermission('Write', function () {
             return true;
         });
         this.permissionStore.definePermission('Delete', function () {
-            return true;
+            return false;
         });
 
         this.roleStore.defineRole('Admin', ['Read', 'Write', 'Delete']);
+    }
+
+    enableRead(enabled: boolean) {
+        this.permissionStore.definePermission('Read', function () {
+            return enabled;
+        });
     }
 }
