@@ -22,7 +22,10 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "ng2-permission.js",
-    "flatModuleId": "ng2-permission"
+    "flatModuleId": "ng2-permission",
+    "generateCodeForLibraries": true,
+    "enableSummariesForJit": true,
+    "alwaysCompileGeneratedCode": true
   },
   "files": [
     "./index.ts"

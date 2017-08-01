@@ -69,8 +69,10 @@ gulp.task('rollup', function () {
       entry: `${buildFolder}/index.js`,
       external: [
         '@angular/core',
+        '@angular/common',
         '@angular/router',
-        'lodash',
+        'lodash-es',
+        'rxjs/**',
       ],
       format: 'es'
     }))
