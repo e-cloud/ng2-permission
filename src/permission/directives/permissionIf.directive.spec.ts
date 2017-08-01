@@ -1,19 +1,24 @@
 /* tslint:disable:no-unused-variable */
 import { Component, DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { PermissionModule } from '../permission.module';
 import { PermissionStore } from '../stores/PermissionStore';
 import { RoleStore } from '../stores/RoleStore';
 
 @Component({
-    template: `<h2 *permissionIf="perm">Show with permission</h2>`
+    template: `
+      <h2 *permissionIf="perm">Show with permission</h2>
+      <h3 *permissionIf="perm; external: externalCondition">show with external condition</h3>
+    `
 })
 class TestHostComponent {
     perm = {
         except: 'Read'
     };
+    externalCondition = true
 }
+
 
 describe('PermissionIfDirective', () => {
     let fixture: ComponentFixture<TestHostComponent>;
@@ -38,7 +43,7 @@ describe('PermissionIfDirective', () => {
 
         permissionStore = TestBed.get(PermissionStore);
         permissionStore.definePermission('Read', function () {
-            return _read;
+            return Promise.resolve(_read);
         });
         permissionStore.definePermission('Write', function () {
             return _write;
@@ -52,51 +57,102 @@ describe('PermissionIfDirective', () => {
         roleStore.defineRole('Admin', ['Read', 'Write', 'Delete']);
 
         fixture = TestBed.createComponent(TestHostComponent);
+        fixture.componentInstance.externalCondition = true
     });
 
-    it('should remove permissionIf elements', () => {
+    it('should remove permissionIf elements with static permission', async(() => {
         _read = true;
         fixture.detectChanges();
-        elemSet = fixture.debugElement.queryAll(By.css('h2'));
-        expect(elemSet.length).toBe(0);
-    });
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h2'));
+            expect(elemSet.length).toBe(0);
+        });
+    }));
 
-    it('should remove permissionIf elements(2)', () => {
+    it('should remove permissionIf elements with static permission and dynamic config', async(() => {
         _write = false;
         testHost = fixture.componentInstance;
         testHost.perm = {
             only: 'Write'
         };
         fixture.detectChanges();
-        elemSet = fixture.debugElement.queryAll(By.css('h2'));
-        expect(elemSet.length).toBe(0);
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h2'));
+            expect(elemSet.length).toBe(0);
 
-        testHost.perm = 'Write';
-        fixture.detectChanges();
-        elemSet = fixture.debugElement.queryAll(By.css('h2'));
-        expect(elemSet.length).toBe(0);
-    });
+            testHost.perm = 'Write';
+            fixture.detectChanges();
+            fixture.whenStable().then(() => {
+                elemSet = fixture.debugElement.queryAll(By.css('h2'));
+                expect(elemSet.length).toBe(0);
+            });
+        });
+    }));
 
-    it('should render permissionIf elements', () => {
+    it('should render permissionIf elements with static permission', async(() => {
         _read = false;
         fixture.detectChanges();
-        elemSet = fixture.debugElement.queryAll(By.css('h2'));
-        expect(elemSet.length).toBe(1);
-    });
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h2'));
+            expect(elemSet.length).toBe(1);
+        });
+    }));
 
-    it('should render permissionIf elements(2)', () => {
+    it('should render permissionIf elements with static permission and dynamic config', async(() => {
         _read = true;
         testHost = fixture.componentInstance;
         testHost.perm = {
             only: 'Read'
         };
         fixture.detectChanges();
-        elemSet = fixture.debugElement.queryAll(By.css('h2'));
-        expect(elemSet.length).toBe(1);
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h2'));
+            expect(elemSet.length).toBe(1);
 
-        testHost.perm = 'Read';
+            testHost.perm = 'Read';
+            fixture.detectChanges();
+            fixture.whenStable().then(() => {
+                elemSet = fixture.debugElement.queryAll(By.css('h2'));
+                expect(elemSet.length).toBe(1);
+            });
+        });
+    }));
+
+    it('should remove permissionIf elements with `true` external condition', async(() => {
+        _read = false;
         fixture.detectChanges();
-        elemSet = fixture.debugElement.queryAll(By.css('h2'));
-        expect(elemSet.length).toBe(1);
-    });
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h3'));
+            expect(elemSet.length).toBe(1);
+        });
+    }));
+
+    it('should render permissionIf elements with `true` external condition', async(() => {
+        _read = true;
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h3'));
+            expect(elemSet.length).toBe(0);
+        });
+    }));
+
+    it('should remove permissionIf elements with `false` external condition', async(() => {
+        _read = false;
+        fixture.componentInstance.externalCondition = false
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h3'));
+            expect(elemSet.length).toBe(0);
+        });
+    }));
+
+    it('should render permissionIf elements with `false` external condition', async(() => {
+        _read = true;
+        fixture.componentInstance.externalCondition = false
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+            elemSet = fixture.debugElement.queryAll(By.css('h3'));
+            expect(elemSet.length).toBe(0);
+        });
+    }));
 });
