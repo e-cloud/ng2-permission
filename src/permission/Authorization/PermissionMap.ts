@@ -1,4 +1,6 @@
-import { each, isFunction, isNil } from 'lodash-es';
+import each from 'lodash-es/each';
+import isNil from 'lodash-es/isNil';
+import isFunction from 'lodash-es/isFunction';
 import { Observable } from 'rxjs/Observable';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { of } from 'rxjs/observable/of';
