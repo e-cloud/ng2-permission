@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/e-cloud/ng2-permission/compare/v0.6.3...v0.6.4) (2017-08-04)
+
+
+### Bug Fixes
+
+* **module-syntax:** use proper import syntax to support tree shaking ([2c589e0](https://github.com/e-cloud/ng2-permission/commit/2c589e0))
+
+
+
 <a name="0.6.3"></a>
 ## [0.6.3](https://github.com/e-cloud/ng2-permission/compare/v0.6.2...v0.6.3) (2017-08-01)
 
