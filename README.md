@@ -104,6 +104,18 @@ Once the library is imported, you can use its components, directives and pipes i
 <h1 *permissionIf="permVar">
   {{title}}
 </h1>
+```
+
+#### External condition
+
+Some, we want to use it with other condition just like combining it with `ngIf`, but we can't use two
+structural directive in one tag. Fortunately, we support external condition in `permissionIf`.
+
+```html
+<h1 *permissionIf="permVar;external: externalCondition">
+  {{title}}
+</h1>
+```
 
 ### Pipe
 Once the library is imported, you can use its components, directives and pipes in your Angular application:
