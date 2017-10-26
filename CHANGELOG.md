@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/e-cloud/ng2-permission/compare/v0.7.0...v0.7.1) (2017-10-26)
+
+
+### Bug Fixes
+
+* **rxjs:** remove the ignored throw operator ([96de94f](https://github.com/e-cloud/ng2-permission/commit/96de94f))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/e-cloud/ng2-permission/compare/v0.6.4...v0.7.0) (2017-10-26)
 
