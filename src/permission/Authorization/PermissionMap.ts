@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { of } from 'rxjs/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 import { map, switchMap } from 'rxjs/operators';
 import { isPromise } from 'rxjs/util/isPromise';
 import { Dictionary } from '../../typings';
@@ -87,7 +88,7 @@ export class PermissionMap {
 
     resolveRedirect(rejectedPermissionName: string): Observable<RedirectRoute> {
         if (!this.redirectTo) {
-            return Observable.throw(new Error('Empty redirect config.'));
+            return _throw(new Error('Empty redirect config.'));
         }
 
         const redirectFunc = this.redirectTo[rejectedPermissionName] || this.redirectTo['default'];
