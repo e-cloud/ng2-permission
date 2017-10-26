@@ -6,8 +6,6 @@ import { PermissionGuard } from './services/permission-guard.service';
 import { PermissionStore } from './stores/PermissionStore';
 import { RoleStore } from './stores/RoleStore';
 
-import './rxjs-extension';
-
 @NgModule({
     imports: [],
     declarations: [

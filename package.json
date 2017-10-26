@@ -37,7 +37,7 @@
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
-    "@angular/cli": "^1.2.1",
+    "@angular/cli": "^1.4.1",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
@@ -63,7 +63,7 @@
     "protractor": "~5.1.0",
     "rollup": "^0.45.0",
     "run-sequence": "^2.1.0",
-    "rxjs": "^5.1.0",
+    "rxjs": "^5.5.0",
     "standard-version": "^4.1.0",
     "ts-node": "~3.3.0",
     "tslint": "~5.5.0",

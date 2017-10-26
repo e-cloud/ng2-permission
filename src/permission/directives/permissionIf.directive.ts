@@ -1,4 +1,5 @@
 import { Directive, EmbeddedViewRef, Input, OnChanges, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
 import { getRawMap } from '../utils';
@@ -51,7 +52,7 @@ export class PermissionIfDirective implements OnInit, OnChanges {
 
     ngOnInit() {
         this.authorizer.onChanges()
-            .debounceTime(250)
+            .pipe(debounceTime(250))
             .subscribe(() => {
                 this.check();
             });

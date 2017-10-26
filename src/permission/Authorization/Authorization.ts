@@ -3,10 +3,11 @@ import { Observable } from 'rxjs/Observable';
 import { PermissionStore } from '../stores/PermissionStore';
 import { RoleStore } from '../stores/RoleStore';
 import { PermissionMap, RawPermissionMap, ValidateResult } from './PermissionMap';
+import { merge } from 'rxjs/observable/merge';
 
 @Injectable()
 export class Authorization {
-    constructor(private permissionStore: PermissionStore, private  roleStore: RoleStore) {
+    constructor(private permissionStore: PermissionStore, private roleStore: RoleStore) {
     }
 
     genPermMap(rpm: RawPermissionMap) {
@@ -22,6 +23,6 @@ export class Authorization {
     }
 
     onChanges() {
-        return Observable.merge(this.permissionStore.getChanges(), this.roleStore.getChanges());
+        return merge(this.permissionStore.getChanges(), this.roleStore.getChanges());
     }
 }

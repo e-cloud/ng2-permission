@@ -5,7 +5,6 @@
     "moduleResolution": "node",
     "rootDir": "./src",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"

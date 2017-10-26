@@ -1,5 +1,6 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
@@ -12,10 +13,10 @@ import { getRawMap } from '../utils';
 export class PermissionPipe implements OnDestroy, PipeTransform {
     private permission$ = new BehaviorSubject(false);
     private lastInput: any;
-    private permissionChanges$: Subscription;
+    private permissionChangesSub: Subscription;
 
     constructor(private authorizer: Authorization) {
-        this.permissionChanges$ = this.authorizer.onChanges()
+        this.permissionChangesSub = this.authorizer.onChanges()
             .subscribe(() => {
                 if (this.lastInput) {
                     this.checkPermission(this.lastInput);
@@ -27,7 +28,7 @@ export class PermissionPipe implements OnDestroy, PipeTransform {
         if (this.permission$) {
             this.permission$.unsubscribe();
         }
-        this.permissionChanges$.unsubscribe();
+        this.permissionChangesSub.unsubscribe();
     }
 
     transform(value: string | RawPermissionMap): any {
@@ -41,7 +42,7 @@ export class PermissionPipe implements OnDestroy, PipeTransform {
 
     private checkPermission(value: string | RawPermissionMap) {
         this.authorizer.resolveRaw({ ...getRawMap(value), redirectTo: null })
-            .take(1)
+            .pipe(take(1))
             .subscribe((result) => {
                 this.permission$.next(result[0]);
             });

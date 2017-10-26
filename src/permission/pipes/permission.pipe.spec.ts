@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { Observer } from 'rxjs/Observer';
 import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
@@ -19,7 +20,10 @@ export class TestComponent {
 
 class FakeAuthorization {
     constructor(private callback: Function) {
+    }
 
+    onChanges() {
+        return of(null);
     }
 
     resolveRaw(map: RawPermissionMap) {
@@ -61,7 +65,7 @@ describe('PermissionPipe', () => {
     });
 
     it('create an instance', () => {
-        const pipe = new PermissionPipe(null);
+        const pipe = new PermissionPipe({ onChanges: () => of(null) } as Authorization);
         expect(pipe).toBeTruthy();
     });
 

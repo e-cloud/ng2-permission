@@ -1,9 +1,11 @@
 import each from 'lodash-es/each';
-import isNil from 'lodash-es/isNil';
 import isFunction from 'lodash-es/isFunction';
+import isNil from 'lodash-es/isNil';
 import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { of } from 'rxjs/observable/of';
+import { map, switchMap } from 'rxjs/operators';
 import { isPromise } from 'rxjs/util/isPromise';
 import { Dictionary } from '../../typings';
 import { PermissionStore } from '../stores/PermissionStore';
@@ -57,30 +59,30 @@ export class PermissionMap {
             if (this.roleStore.hasRoleDefinition(privilegeName)) {
                 const role = this.roleStore.getRoleDefinition(privilegeName);
                 return wrapIntoObservable(role.validate(this.permissionStore))
-                    .map(result => [result, privilegeName] as ValidateResult);
+                    .pipe(map(result => [result, privilegeName] as ValidateResult));
             }
 
             if (this.permissionStore.hasPermissionDefinition(privilegeName)) {
                 const permission = this.permissionStore.getPermissionDefinition(privilegeName);
                 return wrapIntoObservable(permission.validate())
-                    .map(result => [result, privilegeName] as ValidateResult);
+                    .pipe(map(result => [result, privilegeName] as ValidateResult));
             }
 
             return wrapIntoObservable(false)
-                .map(result => [result, privilegeName] as ValidateResult);
+                .pipe(map(result => [result, privilegeName] as ValidateResult));
         });
     }
 
     resolveAll(): Observable<ValidateResult> {
         return this.resolveExceptPrivilegeMap()
-            .switchMap(result => {
+            .pipe(switchMap(result => {
                 // 不存在排除的权限
                 if (result[0]) {
                     return this.resolveOnlyPrivilegeMap();
                 }
 
-                return Observable.of(result);
-            });
+                return of(result);
+            }));
     }
 
     resolveRedirect(rejectedPermissionName: string): Observable<RedirectRoute> {
@@ -91,7 +93,7 @@ export class PermissionMap {
         const redirectFunc = this.redirectTo[rejectedPermissionName] || this.redirectTo['default'];
 
         return wrapIntoObservable(redirectFunc(rejectedPermissionName))
-            .map(function (result) {
+            .pipe(map(function (result) {
                 if (typeof result === 'string') {
                     return {
                         path: result
@@ -103,41 +105,41 @@ export class PermissionMap {
                 }
 
                 throw new Error('Invalid redirect config.');
-            });
+            }));
     }
 
     resolveExceptPrivilegeMap(): Observable<ValidateResult> {
         if (!this.except.length) {
-            return Observable.of([true, null] as ValidateResult);
+            return of([true, null] as ValidateResult);
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.except);
 
-        return Observable.forkJoin(observableArr)
-            .map(function (result) {
+        return forkJoin(observableArr)
+            .pipe(map(function (result) {
                 // if user has any permission
                 if (!result.every(x => !x[0])) {
                     // take those permission
                     return [false, result.find(x => x[0])[1]] as ValidateResult;
                 }
                 return [true, null] as ValidateResult;
-            });
+            }));
     }
 
     resolveOnlyPrivilegeMap(): Observable<ValidateResult> {
         if (!this.only.length) {
-            return Observable.of([true, null] as ValidateResult);
+            return of([true, null] as ValidateResult);
         }
 
         const observableArr = this.resolvePrivilegesValidity(this.only);
 
-        return Observable.forkJoin(observableArr)
-            .map(function (result) {
+        return forkJoin(observableArr)
+            .pipe(map(function (result) {
                 if (!result.every(x => x[0])) {
                     return [false, result.find(x => !x[0])[1]] as ValidateResult;
                 }
                 return [true, null] as ValidateResult;
-            });
+            }));
     }
 }
 

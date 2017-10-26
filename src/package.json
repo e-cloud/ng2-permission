@@ -23,7 +23,7 @@
     "@angular/core": "^4.0.0",
     "@types/lodash-es": "^4.14.5",
     "lodash-es": "^4.17.4",
-    "rxjs": "^5.1.0",
+    "rxjs": "^5.5.0",
     "zone.js": "^0.8.4"
   }
 }
