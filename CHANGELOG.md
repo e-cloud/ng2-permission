@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/e-cloud/ng2-permission/compare/v0.6.4...v0.7.0) (2017-10-26)
+
+
+### Features
+
+* **rxjs:** upgrade rxjs and use its new lettable feature ([99440e4](https://github.com/e-cloud/ng2-permission/commit/99440e4))
+
+
+### BREAKING CHANGES
+
+* **rxjs:** previously we added the operatators to Observable's prototype, now we don't. This could raise some missing references error at the user end.
+
+
+
 <a name="0.6.4"></a>
 ## [0.6.4](https://github.com/e-cloud/ng2-permission/compare/v0.6.3...v0.6.4) (2017-08-04)
 
