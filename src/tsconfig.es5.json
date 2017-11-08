@@ -18,14 +18,16 @@
     "types": []
   },
   "angularCompilerOptions": {
+    "alwaysCompileGeneratedCode": true,
     "annotateForClosureCompiler": true,
-    "strictMetadataEmit": true,
-    "skipTemplateCodegen": true,
-    "flatModuleOutFile": "ng2-permission.js",
-    "flatModuleId": "ng2-permission",
-    "generateCodeForLibraries": true,
     "enableSummariesForJit": true,
-    "alwaysCompileGeneratedCode": true
+    "flatModuleId": "ng2-permission",
+    "flatModuleOutFile": "ng2-permission.js",
+    "fullTemplateTypeCheck": true,
+    "generateCodeForLibraries": true,
+    "skipTemplateCodegen": true,
+    "strictInjectionParameters": true,
+    "strictMetadataEmit": true
   },
   "files": [
     "./index.ts"

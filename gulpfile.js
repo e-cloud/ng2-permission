@@ -1,17 +1,78 @@
-/* eslint-disable */
-var gulp = require('gulp'),
-  path = require('path'),
-  ngc = require('@angular/compiler-cli/src/main').main,
-  rollup = require('gulp-rollup'),
-  del = require('del'),
-  runSequence = require('run-sequence'),
-  inlineResources = require('./tools/gulp/inline-resources');
+const gulp = require('gulp')
+const path = require('path')
+const ngc = require('@angular/compiler-cli/src/main').main
+const rollup = require('rollup')
+const sourcemaps = require('rollup-plugin-sourcemaps');
+const del = require('del')
+const runSequence = require('run-sequence')
+const inlineResources = require('./tools/gulp/inline-resources')
 
 const rootFolder = path.join(__dirname);
 const srcFolder = path.join(rootFolder, 'src');
 const tmpFolder = path.join(rootFolder, '.tmp');
 const buildFolder = path.join(rootFolder, 'build');
 const distFolder = path.join(rootFolder, 'dist');
+
+const libName = 'ng2-permission';
+
+const rollupBaseConfig = {
+  // Bundle's entry point
+  // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
+  input: `${buildFolder}/index.js`,
+
+  name: libName,
+
+  sourcemap: true,
+
+  globals: {
+    // The key here is library name, and the value is the the name of the global variable name
+    // the window object.
+    // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals for more.
+    '@angular/common': 'ng.common',
+    '@angular/core': 'ng.core',
+    '@angular/forms': 'ng.forms',
+    '@angular/platform-browser': 'ng.platform.browser',
+    'rxjs': 'Rx',
+    'rxjs/Observable': 'Rx',
+    'rxjs/observable/empty': 'Rx.Observable',
+    'rxjs/observable/fromEvent': 'Rx.Observable',
+    'rxjs/observable/fromPromise': 'Rx.Observable',
+    'rxjs/observable/merge': 'Rx.Observable',
+    'rxjs/observable/of': 'Rx.Observable',
+    'rxjs/observable/throw': 'Rx.Observable',
+    'rxjs/BehaviorSubject': 'Rx',
+    'rxjs/Subject': 'Rx',
+  },
+
+  external: [
+    // A list of IDs of modules that should remain external to the bundle
+    // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
+    '@angular/core',
+    '@angular/common',
+    '@angular/forms',
+    '@angular/platform-browser',
+    '@angular/router',
+    'lodash-es',
+    'lodash-es/*',
+    'rxjs',
+    'rxjs/operators',
+    'rxjs/Observable',
+    'rxjs/observable/empty',
+    'rxjs/observable/forkJoin',
+    'rxjs/observable/fromEvent',
+    'rxjs/observable/fromPromise',
+    'rxjs/observable/merge',
+    'rxjs/observable/of',
+    'rxjs/observable/of',
+    'rxjs/observable/throw',
+    'rxjs/BehaviorSubject',
+    'rxjs/Subject',
+  ],
+
+  plugins: [
+    sourcemaps()
+  ]
+};
 
 /**
  * 1. Delete /dist folder
@@ -44,43 +105,63 @@ gulp.task('inline-resources', function () {
  * 4. Run the Angular compiler, ngc, on the /.tmp folder. This will output all
  *    compiled modules to the /build folder.
  */
-gulp.task('ngc', function () {
-  return ngc({
-    project: `${tmpFolder}/tsconfig.es5.json`
-  })
-    .then((exitCode) => {
-      if (exitCode === 1) {
-        // This error is caught in the 'compile' task by the runSequence method callback
-        // so that when ngc fails to compile, the whole compile process stops running
-        throw new Error('ngc compilation failed');
-      }
-    });
+gulp.task('ngc', function (cb) {
+  const exitCode = ngc(['-p', `${tmpFolder}/tsconfig.es5.json`])
+
+  if (exitCode === 1) {
+    // This error is caught in the 'compile' task by the runSequence method callback
+    // so that when ngc fails to compile, the whole compile process stops running
+    throw new Error('ngc compilation failed');
+  }
+
+  cb()
 });
 
 /**
  * 5. Run rollup inside the /build folder to generate our Flat ES module and place the
  *    generated file into the /dist folder
  */
-gulp.task('rollup', function () {
-  return gulp.src(`${buildFolder}/**/*.js`)
-  // transform the files here.
-    .pipe(rollup({
-      // any option supported by Rollup can be set here.
-      entry: `${buildFolder}/index.js`,
-      external: [
-        '@angular/core',
-        '@angular/common',
-        '@angular/router',
-        'lodash-es',
-        'rxjs/**',
-      ],
-      format: 'es'
-    }))
-    .pipe(gulp.dest(distFolder));
+gulp.task('rollup:fesm', async function () {
+  const config = Object.assign({}, rollupBaseConfig, {
+    // Format of generated bundle
+    // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
+    format: 'es',
+
+    file: path.join(distFolder, `${libName}.js`),
+
+    sourcemapFile: path.join(buildFolder, `${libName}.js`),
+  })
+  const bundle = await rollup.rollup(config)
+
+  await bundle.write(config);
 });
 
 /**
- * 6. Copy all the files from /build to /dist, except .js files. We ignore all .js from /build
+ * 6. Run rollup inside the /build folder to generate our UMD module and place the
+ *    generated file into the /dist folder
+ */
+gulp.task('rollup:umd', async function () {
+  const config = Object.assign({}, rollupBaseConfig, {
+
+    // Format of generated bundle
+    // See https://github.com/rollup/rollup/wiki/JavaScript-API#format
+    format: 'umd',
+
+    // Export mode to use
+    // See https://github.com/rollup/rollup/wiki/JavaScript-API#exports
+    exports: 'named',
+
+    file: path.join(distFolder, `${libName}.umd.js`),
+    sourcemapFile: path.join(buildFolder, `${libName}.umd.js`),
+  })
+
+  const bundle = await rollup.rollup(config)
+
+  await bundle.write(config);
+});
+
+/**
+ * 7. Copy all the files from /build to /dist, except .js files. We ignore all .js from /build
  *    because with don't need individual modules anymore, just the Flat ES module generated
  *    on step 5.
  */
@@ -90,7 +171,7 @@ gulp.task('copy:build', function () {
 });
 
 /**
- * 7. Copy package.json from /src to /dist
+ * 8. Copy package.json from /src to /dist
  */
 gulp.task('copy:manifest', function () {
   return gulp.src([`${srcFolder}/package.json`])
@@ -98,14 +179,22 @@ gulp.task('copy:manifest', function () {
 });
 
 /**
- * 8. Delete /.tmp folder
+ * 9. Copy README.md from / to /dist
+ */
+gulp.task('copy:readme', function () {
+  return gulp.src([path.join(rootFolder, 'README.{MD,md}')])
+    .pipe(gulp.dest(distFolder));
+});
+
+/**
+ * 10. Delete /.tmp folder
  */
 gulp.task('clean:tmp', function () {
   return deleteFolders([tmpFolder]);
 });
 
 /**
- * 9. Delete /build folder
+ * 11. Delete /build folder
  */
 gulp.task('clean:build', function () {
   return deleteFolders([buildFolder]);
@@ -117,9 +206,11 @@ gulp.task('compile', function () {
     'copy:source',
     'inline-resources',
     'ngc',
-    'rollup',
+    'rollup:fesm',
+    'rollup:umd',
     'copy:build',
     'copy:manifest',
+    'copy:readme',
     'clean:build',
     'clean:tmp',
     function (err) {
@@ -141,8 +232,12 @@ gulp.task('watch', function () {
 
 gulp.task('clean', ['clean:dist', 'clean:tmp', 'clean:build']);
 
-gulp.task('build', ['clean', 'compile']);
+gulp.task('build', function (cb) {
+  runSequence('clean', 'compile', cb)
+});
+
 gulp.task('build:watch', ['build', 'watch']);
+
 gulp.task('default', ['build:watch']);
 
 /**

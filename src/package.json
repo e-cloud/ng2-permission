@@ -16,8 +16,11 @@
   "bugs": {
     "url": "https://github.com/e-cloud/ng2-permission/issues"
   },
-  "module": "ng2-permission.js",
-  "typings": "ng2-permission.d.ts",
+  "main": "ng2-permission.js",
+  "jsnext:main": "ng2-permission.js",
+  "es2015": "ng2-permission.js",
+  "bundle": "ng2-permission.umd.js",
+  "typings": "ngx-tree.d.ts",
   "peerDependencies": {
     "@angular/common": "^4.0.0 || ~5.0.0",
     "@angular/core": "^4.0.0 || ~5.0.0",
