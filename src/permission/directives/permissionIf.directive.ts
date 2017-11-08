@@ -4,6 +4,12 @@ import { Authorization } from '../Authorization/Authorization';
 import { RawPermissionMap } from '../Authorization/PermissionMap';
 import { getRawMap } from '../utils';
 
+export class PermissionIfContext {
+    public $implicit: boolean = null;
+    public permissionIf: boolean = null;
+    public external: boolean = null;
+}
+
 @Directive({
     selector: '[permissionIf]'
 })
@@ -99,10 +105,4 @@ export class PermissionIfDirective implements OnInit, OnChanges {
     private setExternalCondition(condition: boolean) {
         this._context.external = condition;
     }
-}
-
-export class PermissionIfContext {
-    public $implicit: boolean = null;
-    public permissionIf: boolean = null;
-    public external: boolean = null;
 }
