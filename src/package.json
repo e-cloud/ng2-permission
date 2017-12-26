@@ -22,14 +22,14 @@
   "bundle": "ng2-permission.umd.js",
   "typings": "ng2-permission.d.ts",
   "peerDependencies": {
-    "@angular/common": "^4.0.0 || ~5.0.0",
-    "@angular/core": "^4.0.0 || ~5.0.0",
+    "@angular/common": "^4.0.0 || ^5.0.0",
+    "@angular/core": "^4.0.0 || ^5.0.0",
     "@types/lodash-es": "^4.14.5",
     "lodash-es": "^4.17.4",
     "rxjs": "^5.5.0",
     "zone.js": "^0.8.4"
   },
   "optionalDependencies": {
-    "@angular/router": "^4.0.0 || ~5.0.0"
+    "@angular/router": "^4.0.0 || ^5.0.0"
   }
 }
