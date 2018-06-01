@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/e-cloud/ng2-permission/compare/v0.8.2...v0.9.0) (2018-06-01)
+
+
+### Features
+
+* upgrade to Ng6 and Rxjs 6 and the project template ([603c1a5](https://github.com/e-cloud/ng2-permission/commit/603c1a5))
+
+
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/e-cloud/ng2-permission/compare/v0.8.1...v0.8.2) (2017-12-26)
 

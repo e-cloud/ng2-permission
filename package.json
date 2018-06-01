@@ -1,6 +1,6 @@
 {
   "name": "ng2-permission",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "scripts": {
     "build": "ng build ng2-permission",
     "build:demo": "ng build demo --base-href /ng2-permission/docs/demo/ -c production",
