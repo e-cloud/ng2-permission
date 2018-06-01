@@ -1,7 +1,7 @@
 const version = require('../package.json').version;
 const fs = require('fs')
 
-const targetFilePath = 'src/package.json'
+const targetFilePath = 'projects/ng2-permission/package.json'
 
 const target = fs.readFileSync(targetFilePath).toString()
 

@@ -1,0 +1,18 @@
+<h1>
+  {{title}}
+</h1>
+
+<button (click)="toggleReadPermission($event)">toggle read permission</button>
+
+<ul>
+  <li *ngFor="let item of permissionList">
+    <h2 *ngIf="(item | permission | async); else perm">show with "{{ item }}" permission</h2>
+
+    <ng-template #perm>
+      <h2>show without "{{ item }}" permission</h2>
+    </ng-template>
+  </li>
+</ul>
+
+
+<router-outlet></router-outlet>
