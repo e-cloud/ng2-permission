@@ -44,7 +44,7 @@ export class PermissionPipe implements OnDestroy, PipeTransform {
         this.authorizer.resolveRaw({ ...getRawMap(value), redirectTo: null })
             .pipe(take(1))
             .subscribe((result) => {
-                this.permission$.next(result[0]);
+                this.permission$.next(result.valid);
             });
     }
 

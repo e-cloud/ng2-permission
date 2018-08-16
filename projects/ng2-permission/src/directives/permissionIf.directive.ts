@@ -73,7 +73,7 @@ export class PermissionIfDirective implements OnInit, OnChanges {
     check() {
         this.authorizer.resolve(this.authorizer.genPermMap(this.rawMap))
             .subscribe((result) => {
-                this.setCondition(result[0]);
+                this.setCondition(result.valid);
                 this.updateView();
             });
     }

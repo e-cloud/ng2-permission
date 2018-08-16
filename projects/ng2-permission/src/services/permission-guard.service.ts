@@ -33,9 +33,9 @@ export class PermissionGuard implements CanActivate, CanActivateChild {
         const permMap = this.authorize.genPermMap(getRawMap(perm));
         return this.authorize.resolve(permMap)
             .pipe(switchMap((result) => {
-                if (!result[0] && permMap.redirectTo) {
+                if (!result.valid && permMap.redirectTo) {
                     this.permissionRejected$.next(permMap);
-                    return permMap.resolveRedirect(result[1])
+                    return permMap.resolveRedirect(result.permissionName)
                         .pipe(
                             take(1),
                             map(redirect => {
@@ -46,7 +46,7 @@ export class PermissionGuard implements CanActivate, CanActivateChild {
                         );
                 }
 
-                return wrapIntoObservable(result[0]);
+                return wrapIntoObservable(result.valid);
             }));
     }
 }
