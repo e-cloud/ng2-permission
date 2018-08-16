@@ -7,4 +7,4 @@ export * from './pipes/permission.pipe';
 export * from './services/permission-guard.service';
 export * from './stores/PermissionStore';
 export * from './stores/RoleStore';
-export * from './permission.module'
+export * from './permission.module';

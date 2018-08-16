@@ -15,26 +15,26 @@ import { PermissionGuard } from './permission-guard.service';
 @Component({
     template: `
         <router-outlet></router-outlet>
-    `
+    `,
 })
 export class RoutingComponent {
 }
 
 // tslint:disable:max-classes-per-file
 @Component({
-    template: 'Test Component'
+    template: 'Test Component',
 })
 export class HomeComponent {
 }
 
 @Component({
-    template: '404 Component'
+    template: '404 Component',
 })
 export class PageNotFoundComponent {
 }
 
 @Component({
-    template: 'Test Login'
+    template: 'Test Login',
 })
 export class LoginComponent {
 }
@@ -62,9 +62,9 @@ describe('PermissionGuard', () => {
                         data: {
                             permission: {
                                 only: 'Admin',
-                                except: 'Suspect'
-                            }
-                        }
+                                except: 'Suspect',
+                            },
+                        },
                     },
                     {
                         path: 'home2',
@@ -74,9 +74,9 @@ describe('PermissionGuard', () => {
                             permission: {
                                 only: 'Admin',
                                 except: 'Suspect',
-                                redirectTo: '/404'
-                            }
-                        }
+                                redirectTo: '/404',
+                            },
+                        },
                     },
                 ]),
             ],
@@ -86,7 +86,7 @@ describe('PermissionGuard', () => {
                 HomeComponent,
                 LoginComponent,
                 PageNotFoundComponent,
-            ]
+            ],
         });
 
         _accessHome = false;

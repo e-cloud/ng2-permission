@@ -87,7 +87,7 @@ export class PermissionMap {
                 }
 
                 return of(result);
-            }),switchMap(result => {
+            }), switchMap(result => {
                 // resolve anyOf privileges when only privileges are granted
                 if (result.valid) {
                     return this.resolveAnyOfPrivilegeMap();

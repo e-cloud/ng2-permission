@@ -10,10 +10,10 @@ describe('PermissionMap', () => {
     let roleStore: RoleStore;
     let permissionStore: PermissionStore;
 
-    const PERM_WRITE = 'Write'
-    const PERM_READ = 'Read'
-    const PERM_DELETE = 'Delete'
-    const PERM_EXEC = 'Execute'
+    const PERM_WRITE = 'Write';
+    const PERM_READ = 'Read';
+    const PERM_DELETE = 'Delete';
+    const PERM_EXEC = 'Execute';
 
     let _read: boolean;
     let _write: boolean;

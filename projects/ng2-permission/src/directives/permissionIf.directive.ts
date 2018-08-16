@@ -13,28 +13,18 @@ export class PermissionIfContext {
 }
 
 @Directive({
-    selector: '[permissionIf]'
+    selector: '[permissionIf]',
 })
 export class PermissionIfDirective implements OnInit, OnChanges {
-    private rawMap: RawPermissionMap = {};
-    private _context: PermissionIfContext = new PermissionIfContext();
-    private _thenTemplateRef: TemplateRef<PermissionIfContext> | null = null;
-    private _elseTemplateRef: TemplateRef<PermissionIfContext> | null = null;
-    private _thenViewRef: EmbeddedViewRef<PermissionIfContext> | null = null;
-    private _elseViewRef: EmbeddedViewRef<PermissionIfContext> | null = null;
-
-    constructor(
-        templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private authorizer: Authorization
-    ) {
-        this._thenTemplateRef = templateRef;
-        this.setExternalCondition(true);
-        this.setCondition(false);
-    }
+    protected rawMap: RawPermissionMap = {};
+    protected _context: PermissionIfContext = new PermissionIfContext();
+    protected _thenTemplateRef: TemplateRef<PermissionIfContext> | null = null;
+    protected _elseTemplateRef: TemplateRef<PermissionIfContext> | null = null;
+    protected _thenViewRef: EmbeddedViewRef<PermissionIfContext> | null = null;
+    protected _elseViewRef: EmbeddedViewRef<PermissionIfContext> | null = null;
 
     @Input()
-    set permissionIf(perm: string | RawPermissionMap) {
+    set permissionIf(perm: string | string[] | RawPermissionMap) {
         this.rawMap = getRawMap(perm);
     }
 
@@ -56,6 +46,16 @@ export class PermissionIfDirective implements OnInit, OnChanges {
         this._elseTemplateRef = templateRef;
         this._elseViewRef = null;  // clear previous view if any.
         this.updateView();
+    }
+
+    constructor(
+        templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef,
+        private authorizer: Authorization,
+    ) {
+        this._thenTemplateRef = templateRef;
+        this.setExternalCondition(true);
+        this.setCondition(false);
     }
 
     ngOnInit() {
@@ -100,11 +100,11 @@ export class PermissionIfDirective implements OnInit, OnChanges {
         }
     }
 
-    private setCondition(condition = true) {
+    protected setCondition(condition = true) {
         this._context.$implicit = this._context.permissionIf = condition && this._context.external;
     }
 
-    private setExternalCondition(condition: boolean) {
+    protected setExternalCondition(condition: boolean) {
         this._context.external = condition;
     }
 }
