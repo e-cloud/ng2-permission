@@ -32,5 +32,4 @@ Desktop.ini
 dist/*
 
 # other
-yarn.lock
 package-lock.json
