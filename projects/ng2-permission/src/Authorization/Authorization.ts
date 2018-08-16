@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { merge, Observable } from 'rxjs';
 
 import { PermissionStore } from '../stores/PermissionStore';
@@ -27,3 +27,14 @@ export class Authorization {
         return merge(this.permissionStore.getChanges(), this.roleStore.getChanges());
     }
 }
+
+export function AUTHORIZATION_PROVIDER_FACTORY(parent: Authorization, permissionStore: PermissionStore, roleStore: RoleStore) {
+    return parent || new Authorization(permissionStore, roleStore);
+}
+
+export const AUTHORIZATION_PROVIDER = {
+    // If there is already an Locale available, use that. Otherwise, provide a new one.
+    provide: Authorization,
+    deps: [[new Optional(), new SkipSelf(), Authorization], PermissionStore, RoleStore],
+    useFactory: AUTHORIZATION_PROVIDER_FACTORY,
+};

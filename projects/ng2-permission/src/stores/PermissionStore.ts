@@ -1,3 +1,4 @@
+import { Optional, SkipSelf } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import { Dictionary, Permission, Validator } from '../models';
@@ -41,3 +42,14 @@ export class PermissionStore {
         return this.eventer$.asObservable();
     }
 }
+
+export function PERMISSIONSTORE_PROVIDER_FACTORY(parent: PermissionStore) {
+    return parent || new PermissionStore();
+}
+
+export const PERMISSIONSTORE_PROVIDER = {
+    // If there is already an Locale available, use that. Otherwise, provide a new one.
+    provide: PermissionStore,
+    deps: [[new Optional(), new SkipSelf(), PermissionStore]],
+    useFactory: PERMISSIONSTORE_PROVIDER_FACTORY,
+};

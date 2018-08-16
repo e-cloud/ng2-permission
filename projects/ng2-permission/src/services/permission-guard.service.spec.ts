@@ -51,7 +51,7 @@ describe('PermissionGuard', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                PermissionModule.forRoot(),
+                PermissionModule,
                 RouterTestingModule.withRoutes([
                     { path: 'login', component: LoginComponent },
                     { path: '404', component: PageNotFoundComponent },

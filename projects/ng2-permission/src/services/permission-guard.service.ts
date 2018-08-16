@@ -13,9 +13,7 @@ export class PermissionGuard implements CanActivate, CanActivateChild {
 
     constructor(private authorize: Authorization, private router: Router) { }
 
-    canActivate(
-        route: ActivatedRouteSnapshot,
-    ): Observable<boolean> | Promise<boolean> | boolean {
+    canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         const data: any = route.data;
 
         if (!data.permission) {
