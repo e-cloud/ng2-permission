@@ -1,0 +1,942 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ng2-permission</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ng2-permission</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <nav>
+
+    <ul class="list">
+
+        <li class="title">
+            <a href="index.html" data-type="index-link">ng2-permission</a>
+        </li>
+
+        <li class="divider"></li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
+            <ul class="links">
+                    <li class="link">
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
+                            data-type="chapter-link">
+                            <span class="fa fa-fw fa-th"></span>Overview
+                        </a>
+                    </li>
+                    <li class="link">
+                      <a href="index.html" data-type="chapter-link"><span class="fa fa-file-text-o"></span>README</a>
+                    </li>
+                    <li class="link">
+                            <a href="changelog.html"
+                        data-type="chapter-link">
+                            <span class="fa fa-fw fa-file-text-o"></span>CHANGELOG
+                        </a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter modules">
+            <a data-type="chapter-link" href="modules.html">
+                <div class="menu-toggler linked" data-toggle="collapse"
+                        data-target="#xs-modules-links"
+                >
+                    <span class="fa fa-fw fa-archive"></span>
+                    <span class="link-name">Modules</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </a>
+            <ul class="links collapse"
+                    id="xs-modules-links"
+                >
+                    <li class="link">
+                        <a href="modules/PermissionModule.html" data-type="entity-link">PermissionModule</a>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#xs-directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                    <span class="fa fa-fw fa-code"></span>
+                                    <span>Directives</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="xs-directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                        <li class="link">
+                                            <a href="directives/PermissionAnyOfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionAnyOfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionExceptDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionExceptDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionIfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionIfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionOnlyDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionOnlyDirective</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#xs-injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                    <span class="fa fa-fw fa-long-arrow-down"></span>
+                                    <span>Injectables</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="xs-injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                        <li class="link">
+                                            <a href="injectables/PermissionGuard.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>PermissionGuard</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#xs-pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                    <span class="fa fa-fw fa-plus"></span>
+                                    <span>Pipes</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="xs-pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                        <li class="link">
+                                            <a href="pipes/PermissionPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionPipe</a>
+                                        </li>
+                                </ul>
+                            </li>
+                    </li>
+            </ul>
+        </li>
+
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-classes-links"
+                >
+                <span class="fa fa-fw fa-file-code-o"></span>
+                <span>Classes</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-classes-links"
+                >
+                    <li class="link">
+                        <a href="classes/Permission.html" data-type="entity-link">Permission</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionIfContext.html" data-type="entity-link">PermissionIfContext</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionMap.html" data-type="entity-link">PermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionStore.html" data-type="entity-link">PermissionStore</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/Role.html" data-type="entity-link">Role</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/RoleStore.html" data-type="entity-link">RoleStore</a>
+                    </li>
+            </ul>
+        </li>
+
+                <li class="chapter">
+                    <div class="simple menu-toggler" data-toggle="collapse"
+                            data-target="#xs-injectables-links"
+                        >
+                        <span class="fa fa-fw fa-long-arrow-down"></span>
+                        <span>Injectables</span>
+                        <span class="fa fa-angle-down"></span>
+                    </div>
+                    <ul class="links collapse"
+                            id="xs-injectables-links"
+                        >
+                            <li class="link">
+                                <a href="injectables/Authorization.html" data-type="entity-link">Authorization</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/PermissionGuard.html" data-type="entity-link">PermissionGuard</a>
+                            </li>
+                    </ul>
+                </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-interfaces-links"
+                >
+                <span class="fa fa-fw fa-info"></span>
+                <span>Interfaces</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-interfaces-links"
+                >
+                    <li class="link">
+                        <a href="interfaces/Dictionary.html" data-type="entity-link">Dictionary</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RawPermissionMap.html" data-type="entity-link">RawPermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectMap.html" data-type="entity-link">RedirectMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectRoute.html" data-type="entity-link">RedirectRoute</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/ValidateResult.html" data-type="entity-link">ValidateResult</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-miscellaneous-links"
+                >
+                <span class="fa fa-fw fa-cubes"></span>
+                <span>Miscellaneous</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-miscellaneous-links"
+                >
+                    <li class="link">
+                      <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="coverage.html"><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+
+    <ul class="list">
+
+        <li class="title">
+            <a href="index.html" data-type="index-link">ng2-permission</a>
+        </li>
+
+        <li class="divider"></li>
+
+            <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
+            <ul class="links">
+                    <li class="link">
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
+                            data-type="chapter-link">
+                            <span class="fa fa-fw fa-th"></span>Overview
+                        </a>
+                    </li>
+                    <li class="link">
+                      <a href="index.html" data-type="chapter-link"><span class="fa fa-file-text-o"></span>README</a>
+                    </li>
+                    <li class="link">
+                            <a href="changelog.html"
+                        data-type="chapter-link">
+                            <span class="fa fa-fw fa-file-text-o"></span>CHANGELOG
+                        </a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter modules">
+            <a data-type="chapter-link" href="modules.html">
+                <div class="menu-toggler linked" data-toggle="collapse"
+                        data-target="#modules-links"
+                >
+                    <span class="fa fa-fw fa-archive"></span>
+                    <span class="link-name">Modules</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </a>
+            <ul class="links collapse"
+                    id="modules-links"
+>
+                    <li class="link">
+                        <a href="modules/PermissionModule.html" data-type="entity-link">PermissionModule</a>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                    <span class="fa fa-fw fa-code"></span>
+                                    <span>Directives</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                        <li class="link">
+                                            <a href="directives/PermissionAnyOfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionAnyOfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionExceptDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionExceptDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionIfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionIfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionOnlyDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionOnlyDirective</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                    <span class="fa fa-fw fa-long-arrow-down"></span>
+                                    <span>Injectables</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                        <li class="link">
+                                            <a href="injectables/PermissionGuard.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>PermissionGuard</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                    <span class="fa fa-fw fa-plus"></span>
+                                    <span>Pipes</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                        <li class="link">
+                                            <a href="pipes/PermissionPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionPipe</a>
+                                        </li>
+                                </ul>
+                            </li>
+                    </li>
+            </ul>
+        </li>
+
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#classes-links"
+>
+                <span class="fa fa-fw fa-file-code-o"></span>
+                <span>Classes</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="classes-links"
+>
+                    <li class="link">
+                        <a href="classes/Permission.html" data-type="entity-link">Permission</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionIfContext.html" data-type="entity-link">PermissionIfContext</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionMap.html" data-type="entity-link">PermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionStore.html" data-type="entity-link">PermissionStore</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/Role.html" data-type="entity-link">Role</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/RoleStore.html" data-type="entity-link">RoleStore</a>
+                    </li>
+            </ul>
+        </li>
+
+                <li class="chapter">
+                    <div class="simple menu-toggler" data-toggle="collapse"
+                            data-target="#injectables-links"
+>
+                        <span class="fa fa-fw fa-long-arrow-down"></span>
+                        <span>Injectables</span>
+                        <span class="fa fa-angle-down"></span>
+                    </div>
+                    <ul class="links collapse"
+                            id="injectables-links"
+>
+                            <li class="link">
+                                <a href="injectables/Authorization.html" data-type="entity-link">Authorization</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/PermissionGuard.html" data-type="entity-link">PermissionGuard</a>
+                            </li>
+                    </ul>
+                </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#interfaces-links"
+>
+                <span class="fa fa-fw fa-info"></span>
+                <span>Interfaces</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="interfaces-links"
+>
+                    <li class="link">
+                        <a href="interfaces/Dictionary.html" data-type="entity-link">Dictionary</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RawPermissionMap.html" data-type="entity-link">RawPermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectMap.html" data-type="entity-link">RedirectMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectRoute.html" data-type="entity-link">RedirectRoute</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/ValidateResult.html" data-type="entity-link">ValidateResult</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#miscellaneous-links"
+>
+                <span class="fa fa-fw fa-cubes"></span>
+                <span>Miscellaneous</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="miscellaneous-links"
+>
+                    <li class="link">
+                      <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="coverage.html"><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>ValidateResult</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/ng2-permission/src/Authorization/PermissionMap.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#permissionName">permissionName</a>
+                                </li>
+                                <li>
+                                        <a href="#valid">valid</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="permissionName"></a>
+                                        <span class="name"><b>permissionName</b><a href="#permissionName"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>permissionName:     <code>string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="valid"></a>
+                                        <span class="name"><b>valid</b><a href="#valid"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>valid:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import each from &#x27;lodash-es/each&#x27;;
+import isFunction from &#x27;lodash-es/isFunction&#x27;;
+import isNil from &#x27;lodash-es/isNil&#x27;;
+import isString from &#x27;lodash-es/isString&#x27;;
+import { forkJoin, from, Observable, of, throwError } from &#x27;rxjs&#x27;;
+import { isPromise } from &#x27;rxjs/internal/util/isPromise&#x27;;
+import { map, switchMap } from &#x27;rxjs/operators&#x27;;
+
+import { Dictionary } from &#x27;../models&#x27;;
+import { PermissionStore } from &#x27;../stores/PermissionStore&#x27;;
+import { RoleStore } from &#x27;../stores/RoleStore&#x27;;
+
+export interface RedirectRoute {
+    path: string
+
+    [prop: string]: any
+}
+
+export type RedirectFunc &#x3D; (rejectedPermissionName: string) &#x3D;&gt; RedirectRoute
+
+export type Redirection &#x3D; RedirectRoute | RedirectFunc | string | {
+    [prop: string]: RedirectRoute | RedirectFunc | string;
+}
+
+export interface RedirectMap {
+    default: RedirectFunc
+
+    [prop: string]: RedirectFunc
+}
+
+export interface RawPermissionMap {
+    // aka allOf
+    only?: string[] | string
+    // aka not
+    except?: string[] | string
+    anyOf?: string[]
+    redirectTo?: any
+}
+
+export interface ValidateResult {
+    valid: boolean;
+    permissionName: string | null;
+}
+
+export class PermissionMap {
+    only: string[];
+    anyOf: string[];
+    except: string[];
+    redirectTo: RedirectMap;
+
+    constructor(
+        permissionMap: RawPermissionMap &#x3D; &lt;any&gt;{},
+        private permissionStore: PermissionStore,
+        private roleStore: RoleStore,
+    ) {
+        this.only &#x3D; normalizeSetOperationProperty(permissionMap.only);
+        this.anyOf &#x3D; normalizeSetOperationProperty(permissionMap.anyOf);
+        this.except &#x3D; normalizeSetOperationProperty(permissionMap.except);
+        this.redirectTo &#x3D; normalizeRedirectToProperty(permissionMap.redirectTo);
+    }
+
+    resolvePrivilegesValidity(privileges: string[]): Observable&lt;ValidateResult&gt;[] {
+        return privileges.map(privilegeName &#x3D;&gt; {
+            if (this.roleStore.hasRoleDefinition(privilegeName)) {
+                const role &#x3D; this.roleStore.getRoleDefinition(privilegeName);
+                return wrapIntoObservable(role.validate(this.permissionStore))
+                    .pipe(map(result &#x3D;&gt; ({ valid: result, permissionName: privilegeName })));
+            }
+
+            if (this.permissionStore.hasPermissionDefinition(privilegeName)) {
+                const permission &#x3D; this.permissionStore.getPermissionDefinition(privilegeName);
+                return wrapIntoObservable(permission.validate())
+                    .pipe(map(result &#x3D;&gt; ({ valid: result, permissionName: privilegeName })));
+            }
+
+            return wrapIntoObservable(false)
+                .pipe(map(result &#x3D;&gt; ({ valid: result, permissionName: privilegeName })));
+        });
+    }
+
+    resolveAll(): Observable&lt;ValidateResult&gt; {
+        return this.resolveExceptPrivilegeMap()
+            .pipe(switchMap(result &#x3D;&gt; {
+                // resolve only privilege when except privilege not granted indeed
+                if (result.valid) {
+                    return this.resolveOnlyPrivilegeMap();
+                }
+
+                return of(result);
+            }), switchMap(result &#x3D;&gt; {
+                // resolve anyOf privileges when only privileges are granted
+                if (result.valid) {
+                    return this.resolveAnyOfPrivilegeMap();
+                }
+
+                return of(result);
+            }));
+    }
+
+    resolveRedirect(rejectedPermissionName: string): Observable&lt;RedirectRoute&gt; {
+        if (!this.redirectTo) {
+            return throwError(new Error(&#x27;Empty redirect config.&#x27;));
+        }
+
+        const redirectFunc &#x3D; this.redirectTo[rejectedPermissionName] || this.redirectTo.default;
+
+        return wrapIntoObservable(redirectFunc(rejectedPermissionName))
+            .pipe(map(function (result) {
+                if (isString(result)) {
+                    return {
+                        path: result,
+                    };
+                }
+
+                if (typeof result &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+                    return result;
+                }
+
+                throw new Error(&#x27;Invalid redirect config.&#x27;);
+            }));
+    }
+
+    resolveExceptPrivilegeMap(): Observable&lt;ValidateResult&gt; {
+        if (!this.except.length) {
+            return of({ valid: true, permissionName: null });
+        }
+
+        const observableArr &#x3D; this.resolvePrivilegesValidity(this.except);
+
+        return forkJoin(observableArr)
+            .pipe(map(function (result) {
+                // if user is not granted with any permission specified
+                if (result.every(x &#x3D;&gt; !x.valid)) {
+                    return { valid: true, permissionName: null };
+                }
+
+                // find those permission
+                return { ...result.find(x &#x3D;&gt; x.valid), valid: false };
+            }));
+    }
+
+    resolveOnlyPrivilegeMap(): Observable&lt;ValidateResult&gt; {
+        if (!this.only.length) {
+            return of({ valid: true, permissionName: null });
+        }
+
+        const observableArr &#x3D; this.resolvePrivilegesValidity(this.only);
+
+        return forkJoin(observableArr)
+            .pipe(map(function (result) {
+                if (result.every(x &#x3D;&gt; x.valid)) {
+                    return { valid: true, permissionName: null };
+                }
+                return { ...result.find(x &#x3D;&gt; !x.valid), valid: false };
+            }));
+    }
+
+    resolveAnyOfPrivilegeMap(): Observable&lt;ValidateResult&gt; {
+        if (!this.anyOf.length) {
+            return of({ valid: true, permissionName: null });
+        }
+
+        const observableArr &#x3D; this.resolvePrivilegesValidity(this.anyOf);
+
+        return forkJoin(observableArr)
+            .pipe(map(function (result) {
+                if (result.some(x &#x3D;&gt; x.valid)) {
+                    return { valid: true, permissionName: null };
+                }
+                return { valid: false, permissionName: null };
+            }));
+    }
+}
+
+function isObservable(obj: any | Observable&lt;any&gt;): obj is Observable&lt;any&gt; {
+    return !!obj &amp;&amp; typeof obj.subscribe &#x3D;&#x3D;&#x3D; &#x27;function&#x27;;
+}
+
+/**
+ * wrap various source into observable
+ */
+export function wrapIntoObservable&lt;T&gt;(value: T | Promise&lt;T&gt; | Observable&lt;T&gt;): Observable&lt;T&gt; {
+    if (isObservable(value)) {
+        return value;
+    }
+    if (isPromise(value)) {
+        return from(value);
+    }
+    return of(value);
+}
+
+function isObjectSingleRedirectionRule(redirectTo: RedirectRoute) {
+    return !isNil(redirectTo.path);
+}
+
+function normalizeSetOperationProperty(property: string | string[]) {
+    if (typeof property &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        return [property];
+    }
+
+    if (Array.isArray(property)) {
+        return property;
+    }
+
+    return [];
+}
+
+function normalizeRedirectToProperty(redirectTo: Redirection) {
+    if (isNil(redirectTo)) {
+        return null;
+    }
+
+    if (typeof redirectTo &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        return normalizeStringRedirectionRule(redirectTo);
+    }
+
+    if (typeof redirectTo &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+        if (isObjectSingleRedirectionRule(&lt;RedirectRoute&gt;redirectTo)) {
+            return normalizeObjectSingleRedirectionRule(&lt;RedirectRoute&gt;redirectTo);
+        }
+
+        return normalizeObjectMultipleRedirectionRule(redirectTo);
+    }
+
+    if (isFunction(redirectTo)) {
+        return normalizeFunctionRedirectionRule(redirectTo);
+    }
+
+    throw new TypeError(&#x27;Property &quot;redirectTo&quot; must be String, Function, Array or Object&#x27;);
+}
+
+function normalizeStringRedirectionRule(redirectTo: string): RedirectMap {
+    return {
+        default: () &#x3D;&gt; ({
+            path: redirectTo,
+        }),
+    };
+}
+
+function normalizeObjectSingleRedirectionRule(redirectTo: RedirectRoute): RedirectMap {
+    return {
+        default: () &#x3D;&gt; redirectTo,
+    };
+}
+
+function normalizeObjectMultipleRedirectionRule(redirectTo: Dictionary&lt;Redirection&gt;) {
+    const redirectionMap: RedirectMap &#x3D; &lt;any&gt;{};
+
+    each(redirectTo, (redirection: Redirection, permission: string) &#x3D;&gt; {
+        if (typeof redirection &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+            redirectionMap[permission] &#x3D; redirection;
+        }
+
+        if (typeof redirection &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+            redirectionMap[permission] &#x3D; () &#x3D;&gt; &lt;RedirectRoute&gt;redirection;
+        }
+
+        if (typeof redirection &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+            redirectionMap[permission] &#x3D; () &#x3D;&gt; ({
+                path: redirection,
+            });
+        }
+    });
+
+    return redirectionMap;
+}
+
+function normalizeFunctionRedirectionRule(redirectTo: RedirectFunc): RedirectMap {
+    return {
+        default: redirectTo,
+    };
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+        <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'ValidateResult.html';
+        </script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+
+    </body>
+</html>

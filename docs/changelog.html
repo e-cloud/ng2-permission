@@ -1,0 +1,686 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ng2-permission</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ng2-permission</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <nav>
+
+    <ul class="list">
+
+        <li class="title">
+            <a href="index.html" data-type="index-link">ng2-permission</a>
+        </li>
+
+        <li class="divider"></li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
+            <ul class="links">
+                    <li class="link">
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
+                            data-type="chapter-link">
+                            <span class="fa fa-fw fa-th"></span>Overview
+                        </a>
+                    </li>
+                    <li class="link">
+                      <a href="index.html" data-type="chapter-link"><span class="fa fa-file-text-o"></span>README</a>
+                    </li>
+                    <li class="link">
+                            <a href="changelog.html"
+                        data-type="chapter-link">
+                            <span class="fa fa-fw fa-file-text-o"></span>CHANGELOG
+                        </a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter modules">
+            <a data-type="chapter-link" href="modules.html">
+                <div class="menu-toggler linked" data-toggle="collapse"
+                        data-target="#xs-modules-links"
+                >
+                    <span class="fa fa-fw fa-archive"></span>
+                    <span class="link-name">Modules</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </a>
+            <ul class="links collapse"
+                    id="xs-modules-links"
+                >
+                    <li class="link">
+                        <a href="modules/PermissionModule.html" data-type="entity-link">PermissionModule</a>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#xs-directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                    <span class="fa fa-fw fa-code"></span>
+                                    <span>Directives</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="xs-directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                        <li class="link">
+                                            <a href="directives/PermissionAnyOfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionAnyOfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionExceptDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionExceptDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionIfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionIfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionOnlyDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionOnlyDirective</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#xs-injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                    <span class="fa fa-fw fa-long-arrow-down"></span>
+                                    <span>Injectables</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="xs-injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                        <li class="link">
+                                            <a href="injectables/PermissionGuard.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>PermissionGuard</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#xs-pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                    <span class="fa fa-fw fa-plus"></span>
+                                    <span>Pipes</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="xs-pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+                                    >
+                                        <li class="link">
+                                            <a href="pipes/PermissionPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionPipe</a>
+                                        </li>
+                                </ul>
+                            </li>
+                    </li>
+            </ul>
+        </li>
+
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-classes-links"
+                >
+                <span class="fa fa-fw fa-file-code-o"></span>
+                <span>Classes</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-classes-links"
+                >
+                    <li class="link">
+                        <a href="classes/Permission.html" data-type="entity-link">Permission</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionIfContext.html" data-type="entity-link">PermissionIfContext</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionMap.html" data-type="entity-link">PermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionStore.html" data-type="entity-link">PermissionStore</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/Role.html" data-type="entity-link">Role</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/RoleStore.html" data-type="entity-link">RoleStore</a>
+                    </li>
+            </ul>
+        </li>
+
+                <li class="chapter">
+                    <div class="simple menu-toggler" data-toggle="collapse"
+                            data-target="#xs-injectables-links"
+                        >
+                        <span class="fa fa-fw fa-long-arrow-down"></span>
+                        <span>Injectables</span>
+                        <span class="fa fa-angle-down"></span>
+                    </div>
+                    <ul class="links collapse"
+                            id="xs-injectables-links"
+                        >
+                            <li class="link">
+                                <a href="injectables/Authorization.html" data-type="entity-link">Authorization</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/PermissionGuard.html" data-type="entity-link">PermissionGuard</a>
+                            </li>
+                    </ul>
+                </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-interfaces-links"
+                >
+                <span class="fa fa-fw fa-info"></span>
+                <span>Interfaces</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-interfaces-links"
+                >
+                    <li class="link">
+                        <a href="interfaces/Dictionary.html" data-type="entity-link">Dictionary</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RawPermissionMap.html" data-type="entity-link">RawPermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectMap.html" data-type="entity-link">RedirectMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectRoute.html" data-type="entity-link">RedirectRoute</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/ValidateResult.html" data-type="entity-link">ValidateResult</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#xs-miscellaneous-links"
+                >
+                <span class="fa fa-fw fa-cubes"></span>
+                <span>Miscellaneous</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="xs-miscellaneous-links"
+                >
+                    <li class="link">
+                      <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="coverage.html"><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+
+    <ul class="list">
+
+        <li class="title">
+            <a href="index.html" data-type="index-link">ng2-permission</a>
+        </li>
+
+        <li class="divider"></li>
+
+            <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="index.html"><span class="fa fa-home"></span>Getting started</a>
+            <ul class="links">
+                    <li class="link">
+                        <a 
+                            
+                             href="overview.html" 
+                             href="overview.html" 
+                            data-type="chapter-link">
+                            <span class="fa fa-fw fa-th"></span>Overview
+                        </a>
+                    </li>
+                    <li class="link">
+                      <a href="index.html" data-type="chapter-link"><span class="fa fa-file-text-o"></span>README</a>
+                    </li>
+                    <li class="link">
+                            <a href="changelog.html"
+                        data-type="chapter-link">
+                            <span class="fa fa-fw fa-file-text-o"></span>CHANGELOG
+                        </a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter modules">
+            <a data-type="chapter-link" href="modules.html">
+                <div class="menu-toggler linked" data-toggle="collapse"
+                        data-target="#modules-links"
+                >
+                    <span class="fa fa-fw fa-archive"></span>
+                    <span class="link-name">Modules</span>
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </a>
+            <ul class="links collapse"
+                    id="modules-links"
+>
+                    <li class="link">
+                        <a href="modules/PermissionModule.html" data-type="entity-link">PermissionModule</a>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                    <span class="fa fa-fw fa-code"></span>
+                                    <span>Directives</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="directives-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                        <li class="link">
+                                            <a href="directives/PermissionAnyOfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionAnyOfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionExceptDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionExceptDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionIfDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionIfDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/PermissionOnlyDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionOnlyDirective</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                    <span class="fa fa-fw fa-long-arrow-down"></span>
+                                    <span>Injectables</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="injectables-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                        <li class="link">
+                                            <a href="injectables/PermissionGuard.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>PermissionGuard</a>
+                                        </li>
+                                </ul>
+                            </li>
+                            <li class="chapter inner">
+                                <div class="simple menu-toggler" data-toggle="collapse"
+                                        data-target="#pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                    <span class="fa fa-fw fa-plus"></span>
+                                    <span>Pipes</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </div>
+                                <ul class="links collapse"
+                                        id="pipes-links-module-PermissionModule-27a84f46db98d0aed34dd8d6ec236ed6"
+>
+                                        <li class="link">
+                                            <a href="pipes/PermissionPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">PermissionPipe</a>
+                                        </li>
+                                </ul>
+                            </li>
+                    </li>
+            </ul>
+        </li>
+
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#classes-links"
+>
+                <span class="fa fa-fw fa-file-code-o"></span>
+                <span>Classes</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="classes-links"
+>
+                    <li class="link">
+                        <a href="classes/Permission.html" data-type="entity-link">Permission</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionIfContext.html" data-type="entity-link">PermissionIfContext</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionMap.html" data-type="entity-link">PermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/PermissionStore.html" data-type="entity-link">PermissionStore</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/Role.html" data-type="entity-link">Role</a>
+                    </li>
+                    <li class="link">
+                        <a href="classes/RoleStore.html" data-type="entity-link">RoleStore</a>
+                    </li>
+            </ul>
+        </li>
+
+                <li class="chapter">
+                    <div class="simple menu-toggler" data-toggle="collapse"
+                            data-target="#injectables-links"
+>
+                        <span class="fa fa-fw fa-long-arrow-down"></span>
+                        <span>Injectables</span>
+                        <span class="fa fa-angle-down"></span>
+                    </div>
+                    <ul class="links collapse"
+                            id="injectables-links"
+>
+                            <li class="link">
+                                <a href="injectables/Authorization.html" data-type="entity-link">Authorization</a>
+                            </li>
+                            <li class="link">
+                                <a href="injectables/PermissionGuard.html" data-type="entity-link">PermissionGuard</a>
+                            </li>
+                    </ul>
+                </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#interfaces-links"
+>
+                <span class="fa fa-fw fa-info"></span>
+                <span>Interfaces</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="interfaces-links"
+>
+                    <li class="link">
+                        <a href="interfaces/Dictionary.html" data-type="entity-link">Dictionary</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RawPermissionMap.html" data-type="entity-link">RawPermissionMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectMap.html" data-type="entity-link">RedirectMap</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/RedirectRoute.html" data-type="entity-link">RedirectRoute</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/ValidateResult.html" data-type="entity-link">ValidateResult</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <div class="simple menu-toggler" data-toggle="collapse"
+                    data-target="#miscellaneous-links"
+>
+                <span class="fa fa-fw fa-cubes"></span>
+                <span>Miscellaneous</span>
+                <span class="fa fa-angle-down"></span>
+            </div>
+            <ul class="links collapse"
+                    id="miscellaneous-links"
+>
+                    <li class="link">
+                      <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
+                    </li>
+                    <li class="link">
+                      <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
+                    </li>
+            </ul>
+        </li>
+
+
+        <li class="chapter">
+            <a data-type="chapter-link" href="coverage.html"><span class="fa fa-fw fa-tasks"></span>Documentation coverage</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="change-log">Change Log</h1>
+<p>All notable changes to this project will be documented in this file. See <a href="https://github.com/conventional-changelog/standard-version">standard-version</a> for commit guidelines.</p>
+<p><a name="1.0.0"></a></p>
+<h1 id="1-0-0-2018-08-16-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.9.0...v1.0.0">1.0.0</a> (2018-08-16)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li>add rule specific directives for convenience and better semantic (<a href="https://github.com/e-cloud/ng2-permission/commit/f24763b">f24763b</a>)</li>
+<li>deprecate <code>forRoot</code> for better convenient usage (<a href="https://github.com/e-cloud/ng2-permission/commit/c95dbcf">c95dbcf</a>)</li>
+<li>support anyOf rule for full mapping with set operations (<a href="https://github.com/e-cloud/ng2-permission/commit/9e61bd9">9e61bd9</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li>The signature of ValidateResult is changed to be an interface</li>
+</ul>
+<p><a name="0.9.0"></a></p>
+<h1 id="0-9-0-2018-06-01-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.8.2...v0.9.0">0.9.0</a> (2018-06-01)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li>upgrade to Ng6 and Rxjs 6 and the project template (<a href="https://github.com/e-cloud/ng2-permission/commit/603c1a5">603c1a5</a>)</li>
+</ul>
+<p><a name="0.8.2"></a></p>
+<h2 id="0-8-2-2017-12-26-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.8.1...v0.8.2">0.8.2</a> (2017-12-26)</h2>
+<p><a name="0.8.1"></a></p>
+<h2 id="0-8-1-2017-11-23-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.8.0...v0.8.1">0.8.1</a> (2017-11-23)</h2>
+<p><a name="0.8.0"></a></p>
+<h1 id="0-8-0-2017-11-18-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.7.1...v0.8.0">0.8.0</a> (2017-11-18)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>deps:</strong> upgrade deps to support Angular 5 (<a href="https://github.com/e-cloud/ng2-permission/commit/d593fa8">d593fa8</a>)</li>
+</ul>
+<p><a name="0.7.1"></a></p>
+<h2 id="0-7-1-2017-10-26-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.7.0...v0.7.1">0.7.1</a> (2017-10-26)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>rxjs:</strong> remove the ignored throw operator (<a href="https://github.com/e-cloud/ng2-permission/commit/96de94f">96de94f</a>)</li>
+</ul>
+<p><a name="0.7.0"></a></p>
+<h1 id="0-7-0-2017-10-26-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.6.4...v0.7.0">0.7.0</a> (2017-10-26)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>rxjs:</strong> upgrade rxjs and use its new lettable feature (<a href="https://github.com/e-cloud/ng2-permission/commit/99440e4">99440e4</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>rxjs:</strong> previously we added the operatators to Observable&#39;s prototype, now we don&#39;t. This could raise some missing references error at the user end.</li>
+</ul>
+<p><a name="0.6.4"></a></p>
+<h2 id="0-6-4-2017-08-04-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.6.3...v0.6.4">0.6.4</a> (2017-08-04)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>module-syntax:</strong> use proper import syntax to support tree shaking (<a href="https://github.com/e-cloud/ng2-permission/commit/2c589e0">2c589e0</a>)</li>
+</ul>
+<p><a name="0.6.3"></a></p>
+<h2 id="0-6-3-2017-08-01-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.6.2...v0.6.3">0.6.3</a> (2017-08-01)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>permission-pipe:</strong> check lastinput validity (<a href="https://github.com/e-cloud/ng2-permission/commit/eac829d">eac829d</a>)</li>
+</ul>
+<p><a name="0.6.2"></a></p>
+<h2 id="0-6-2-2017-08-01-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.6.1...v0.6.2">0.6.2</a> (2017-08-01)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>authorization:</strong> use merge to properly emit any update (<a href="https://github.com/e-cloud/ng2-permission/commit/e9fde6b">e9fde6b</a>)</li>
+<li><strong>index:</strong> export permission pipe for proper aot (<a href="https://github.com/e-cloud/ng2-permission/commit/40a2a48">40a2a48</a>)</li>
+<li><strong>permission-pipe:</strong> keep data updated from store changes (<a href="https://github.com/e-cloud/ng2-permission/commit/688c53f">688c53f</a>)</li>
+</ul>
+<p><a name="0.6.1"></a></p>
+<h2 id="0-6-1-2017-08-01-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.6.0...v0.6.1">0.6.1</a> (2017-08-01)</h2>
+<p><a name="0.6.0"></a></p>
+<h1 id="0-6-0-2017-08-01-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.5.2...v0.6.0">0.6.0</a> (2017-08-01)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>deps:</strong> sync dependencies to product package.json (<a href="https://github.com/e-cloud/ng2-permission/commit/a9ff85b">a9ff85b</a>)</li>
+<li><strong>types:</strong> improve types to compatible with ts 2.4 (<a href="https://github.com/e-cloud/ng2-permission/commit/7b6763e">7b6763e</a>)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>guard:</strong> provide a way to notify rejected route navigation (<a href="https://github.com/e-cloud/ng2-permission/commit/820bbb3">820bbb3</a>)</li>
+<li><strong>permissionIf:</strong> improve and add tests for permissionIf (<a href="https://github.com/e-cloud/ng2-permission/commit/32f2f0e">32f2f0e</a>)</li>
+<li><strong>permissionIf:</strong> support then &amp; else block, and external condition (<a href="https://github.com/e-cloud/ng2-permission/commit/107f235">107f235</a>)</li>
+</ul>
+<p><a name="0.5.2"></a></p>
+<h2 id="0-5-2-2017-07-31-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.5.1...v0.5.2">0.5.2</a> (2017-07-31)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>guard:</strong> handle string permission properly, support canActivateChild (<a href="https://github.com/e-cloud/ng2-permission/commit/b54c6f3">b54c6f3</a>)</li>
+</ul>
+<p><a name="0.5.1"></a></p>
+<h2 id="0-5-1-2017-07-31-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.5.0...v0.5.1">0.5.1</a> (2017-07-31)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>add missing PermissionGuard to providers config (<a href="https://github.com/e-cloud/ng2-permission/commit/5a6a715">5a6a715</a>)</li>
+</ul>
+<p><a name="0.5.0"></a></p>
+<h1 id="0-5-0-2017-07-30-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.4.0...v0.5.0">0.5.0</a> (2017-07-30)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>permission-guard:</strong> make sure redirectTo work as expected (<a href="https://github.com/e-cloud/ng2-permission/commit/83cebef">83cebef</a>)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>dep:</strong> use lodash-es instead of lodash to support tree shaking (<a href="https://github.com/e-cloud/ng2-permission/commit/6589f5e">6589f5e</a>)</li>
+<li><strong>permission-pipe:</strong> add a  pipe to use aside with external condition (<a href="https://github.com/e-cloud/ng2-permission/commit/e5dfb6d">e5dfb6d</a>)</li>
+</ul>
+<p><a name="0.4.0"></a></p>
+<h1 id="0-4-0-2017-06-07-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.3.0...v0.4.0">0.4.0</a> (2017-06-07)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>recheck the permission onnce the permission stores updated (<a href="https://github.com/e-cloud/ng2-permission/commit/6afe330">6afe330</a>)</li>
+</ul>
+<p><a name="0.3.0"></a></p>
+<h1 id="0-3-0-2017-06-06-"><a href="https://github.com/e-cloud/ng2-permission/compare/v0.2.0...v0.3.0">0.3.0</a> (2017-06-06)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>module-export:</strong> remove default exports (<a href="https://github.com/e-cloud/ng2-permission/commit/c5f20ae">c5f20ae</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>module-export:</strong> we drop default export for aot and better types reference</li>
+</ul>
+<p><a name="0.2.0"></a></p>
+<h1 id="0-2-0-2017-05-03-">0.2.0 (2017-05-03)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>handle empty privilege array (<a href="https://github.com/e-cloud/ng2-permission/commit/2828afb">2828afb</a>)</li>
+<li>typings error for ngc (<a href="https://github.com/e-cloud/ng2-permission/commit/507e664">507e664</a>)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li>add permission-guard service for route intercepting (<a href="https://github.com/e-cloud/ng2-permission/commit/8d767c1">8d767c1</a>)</li>
+<li>add permissionIf directive (<a href="https://github.com/e-cloud/ng2-permission/commit/603c7b5">603c7b5</a>)</li>
+<li>finish permission module (<a href="https://github.com/e-cloud/ng2-permission/commit/45751c7">45751c7</a>)</li>
+<li>setup permission module (<a href="https://github.com/e-cloud/ng2-permission/commit/0817a81">0817a81</a>)</li>
+<li>use generator-angular2-library template for releasing the lib (<a href="https://github.com/e-cloud/ng2-permission/commit/4c6cd8c">4c6cd8c</a>)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+        <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+        </script>
+
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/search/search_index.js"></script>
+
+
+    </body>
+</html>
