@@ -1,5 +1,12 @@
 # ng2-permission
 
+<p align="center">
+  <a href="https://travis-ci.org/e-cloud/ng2-permission?branch=master"><img src="https://travis-ci.org/e-cloud/ng2-permission.svg?branch=master" alt="Travis Status"></a>
+  <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/ng2-permission.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/l/ng2-permission.svg" alt="License"></a>
+  <br>
+</p>
+
 ## Claims
 
 This library is for angular 2+. Its implementation is inspired by [angular-permission](https://github.com/Narzerus/angular-permission). And its usage therefore is similar to `angular-permission`. However,
