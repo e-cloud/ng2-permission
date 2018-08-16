@@ -5,11 +5,64 @@
 <button (click)="toggleReadPermission($event)">toggle read permission</button>
 
 <ul>
+  using pipe
   <li *ngFor="let item of permissionList">
     <h2 *ngIf="(item | permission | async); else perm">show with "{{ item }}" permission</h2>
 
     <ng-template #perm>
-      <h2>show without "{{ item }}" permission</h2>
+      <h2>show else without "{{ item }}" permission</h2>
+    </ng-template>
+  </li>
+</ul>
+
+<ul>
+  using permissionIf
+  <li *ngFor="let item of permissionList">
+    <h2 *permissionIf="item; else perm">show with "{{ item }}" permission</h2>
+
+    <ng-template #perm>
+      <h2>show else without "{{ item }}" permission</h2>
+    </ng-template>
+  </li>
+</ul>
+
+<ul>
+  using permissionOnly
+  <li *ngFor="let item of permissionList">
+    <h2 *permissionOnly="item; else perm">show with "{{ item }}" permission</h2>
+
+    <ng-template #perm>
+      <h2>show else without "{{ item }}" permission</h2>
+    </ng-template>
+  </li>
+</ul>
+
+<ul>
+  using permissionExcept
+  <li *ngFor="let item of permissionList">
+    <h2 *permissionExcept="item; else perm">show without "{{ item }}" permission</h2>
+
+    <ng-template #perm>
+      <h2>show else with "{{ item }}" permission</h2>
+    </ng-template>
+  </li>
+</ul>
+
+<ul>
+  using permissionAnyOf
+  <li>
+    <h2 *permissionAnyOf="['Read', 'Write']; else perm">show with any of read, write permission</h2>
+
+    <ng-template #perm>
+      <h2>show else without any of read, write permission</h2>
+    </ng-template>
+  </li>
+
+  <li>
+    <h2 *permissionAnyOf="['Read', 'Delete']; else perm">show with any of read, delete permission</h2>
+
+    <ng-template #perm>
+      <h2>show else without any of read, delete permission</h2>
     </ng-template>
   </li>
 </ul>
