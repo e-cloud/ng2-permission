@@ -1,7 +1,7 @@
 // tslint:disable:no-implicit-dependencies
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Observable, Observer, of } from 'rxjs';
 
@@ -52,7 +52,7 @@ describe('PermissionPipe', () => {
                     provide: Authorization,
                     useFactory() {
                         return new FakeAuthorization(function () {
-                            return showElement;
+                            return { valid: showElement, permissionName: null };
                         });
                     },
                 },
@@ -72,23 +72,25 @@ describe('PermissionPipe', () => {
         expect(pipe).toBeTruthy();
     });
 
-    it('validate to permission and cause the target element unrendered', () => {
+    it('validate to permission and cause the target element unrendered', async(() => {
         showElement = false;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
+            fixture.detectChanges();
             const component = fixture.debugElement.query(By.css('#header'));
 
             expect(!!component).toBe(false);
         });
-    });
+    }));
 
-    it('validate to permission and make the target element rendered', () => {
+    it('validate to permission and make the target element rendered', async(() => {
         showElement = true;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
+            fixture.detectChanges();
             const component = fixture.debugElement.query(By.css('#header'));
 
             expect(!!component).toBe(true);
         });
-    });
+    }));
 });
