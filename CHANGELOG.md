@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/e-cloud/ng2-permission/compare/v0.9.0...v1.0.0) (2018-08-16)
+
+
+### Features
+
+* add rule specific directives for convenience and better semantic ([f24763b](https://github.com/e-cloud/ng2-permission/commit/f24763b))
+* deprecate `forRoot` for better convenient usage ([c95dbcf](https://github.com/e-cloud/ng2-permission/commit/c95dbcf))
+* support anyOf rule for full mapping with set operations ([9e61bd9](https://github.com/e-cloud/ng2-permission/commit/9e61bd9))
+
+
+### BREAKING CHANGES
+
+* The signature of ValidateResult is changed to be an interface
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/e-cloud/ng2-permission/compare/v0.8.2...v0.9.0) (2018-06-01)
 
