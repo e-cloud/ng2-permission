@@ -104,7 +104,6 @@
     "no-unnecessary-type-assertion": false,
     "no-unsafe-any": false,
     "no-unused-expression": [true, "allow-fast-null-checks"],
-    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-void-expression": {
@@ -179,7 +178,6 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-unused-css": true,
-    "pipe-naming": [true, "camelCase"],
     "templates-no-negated-async": true,
     "trackBy-function": {
       "severity": "warn"

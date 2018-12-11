@@ -5,7 +5,7 @@
   "projects": {
     "ng2-permission": {
       "root": "projects/ng2-permission/",
-      "sourceRoot": "prprojects/ng2-permission/srcojec",
+      "sourceRoot": "projects/ng2-permission/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
