@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/e-cloud/ng2-permission/compare/v1.1.0...v1.2.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* to compatible with angular 9 ([3922d22](https://github.com/e-cloud/ng2-permission/commit/3922d22))
+
+
+### Features
+
+* **deps:** upgrade to angular v10 ([7ed0a5c](https://github.com/e-cloud/ng2-permission/commit/7ed0a5c))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/e-cloud/ng2-permission/compare/v1.1.0...v1.1.1) (2018-12-11)
 
