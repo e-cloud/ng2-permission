@@ -1,7 +1,7 @@
 // tslint:disable:no-implicit-dependencies
 /* tslint:disable:no-unused-variable */
 import { Component, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { PermissionModule } from '../permission.module';
@@ -61,7 +61,7 @@ describe('PermissionIfDirective', () => {
         fixture.componentInstance.externalCondition = true;
     });
 
-    it('should remove permissionIf elements with static permission', async(() => {
+    it('should remove permissionIf elements with static permission', waitForAsync(() => {
         _read = true;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -70,7 +70,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should remove permissionIf elements with string input permission', async(() => {
+    it('should remove permissionIf elements with string input permission', waitForAsync(() => {
         _write = false;
         testHost = fixture.componentInstance;
         testHost.perm = 'Write';
@@ -81,7 +81,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should remove permissionIf elements with static permission and dynamic config', async(() => {
+    it('should remove permissionIf elements with static permission and dynamic config', waitForAsync(() => {
         _write = false;
         testHost = fixture.componentInstance;
         testHost.perm = {
@@ -101,7 +101,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should render permissionIf elements with static permission', async(() => {
+    it('should render permissionIf elements with static permission', waitForAsync(() => {
         _read = false;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -110,7 +110,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should render permissionIf elements with static permission and dynamic config', async(() => {
+    it('should render permissionIf elements with static permission and dynamic config', waitForAsync(() => {
         _read = true;
         testHost = fixture.componentInstance;
         testHost.perm = {
@@ -130,7 +130,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should remove permissionIf elements with `true` external condition', async(() => {
+    it('should remove permissionIf elements with `true` external condition', waitForAsync(() => {
         _read = false;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -139,7 +139,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should render permissionIf elements with `true` external condition', async(() => {
+    it('should render permissionIf elements with `true` external condition', waitForAsync(() => {
         _read = true;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -148,7 +148,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should remove permissionIf elements with `false` external condition', async(() => {
+    it('should remove permissionIf elements with `false` external condition', waitForAsync(() => {
         _read = false;
         fixture.componentInstance.externalCondition = false;
         fixture.detectChanges();
@@ -158,7 +158,7 @@ describe('PermissionIfDirective', () => {
         });
     }));
 
-    it('should render permissionIf elements with `false` external condition', async(() => {
+    it('should render permissionIf elements with `false` external condition', waitForAsync(() => {
         _read = true;
         fixture.componentInstance.externalCondition = false;
         fixture.detectChanges();

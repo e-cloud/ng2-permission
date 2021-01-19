@@ -10,16 +10,16 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ng2-permission/tsconfig.lib.json",
             "project": "projects/ng2-permission/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ng2-permission/ng-package.prod.json"
-            ,              "tsConfig": "projects/ng2-permission/tsconfig.lib.prod.json"
-}
+              "project": "projects/ng2-permission/ng-package.prod.json",
+              "tsConfig": "projects/ng2-permission/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -86,7 +86,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -180,5 +179,8 @@
     "@schematics/angular:directive": {
       "prefix": ""
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

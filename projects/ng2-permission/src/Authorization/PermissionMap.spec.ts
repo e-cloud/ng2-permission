@@ -1,5 +1,5 @@
 // tslint:disable:no-implicit-dependencies
-import { async } from '@angular/core/testing';
+import { waitForAsync } from '@angular/core/testing';
 
 import { PermissionStore } from '../stores/PermissionStore';
 import { RoleStore } from '../stores/RoleStore';
@@ -45,7 +45,7 @@ describe('PermissionMap', () => {
         roleStore.defineRole('Admin', [PERM_READ, PERM_WRITE, PERM_DELETE]);
     });
 
-    it('should create from string', async(function () {
+    it('should create from string', waitForAsync(function () {
         const map = new PermissionMap({
             except: PERM_WRITE,
         }, permissionStore, roleStore);
@@ -63,7 +63,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should create from string array', async(function () {
+    it('should create from string array', waitForAsync(function () {
         const map = new PermissionMap({
             except: [PERM_WRITE],
         }, permissionStore, roleStore);
@@ -81,7 +81,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate with empty map', async(function () {
+    it('should validate with empty map', waitForAsync(function () {
         let map = new PermissionMap({
             except: [],
         }, permissionStore, roleStore);
@@ -111,7 +111,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate except rule', async(function () {
+    it('should validate except rule', waitForAsync(function () {
         const map = new PermissionMap({
             except: [PERM_WRITE],
         }, permissionStore, roleStore);
@@ -129,7 +129,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate only rule', async(function () {
+    it('should validate only rule', waitForAsync(function () {
         const map = new PermissionMap({
             only: [PERM_WRITE],
         }, permissionStore, roleStore);
@@ -147,7 +147,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate anyOf rule', async(function () {
+    it('should validate anyOf rule', waitForAsync(function () {
         const map = new PermissionMap({
             anyOf: [PERM_WRITE, PERM_READ],
         }, permissionStore, roleStore);
@@ -173,7 +173,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate except and only both', async(function () {
+    it('should validate except and only both', waitForAsync(function () {
         const map = new PermissionMap({
             except: [PERM_READ],
             only: [PERM_WRITE],
@@ -199,7 +199,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate only and anyOf both', async(function () {
+    it('should validate only and anyOf both', waitForAsync(function () {
         const map = new PermissionMap({
             anyOf: [PERM_READ, PERM_DELETE],
             only: [PERM_WRITE],
@@ -233,7 +233,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate except and anyOf both', async(function () {
+    it('should validate except and anyOf both', waitForAsync(function () {
         const map = new PermissionMap({
             anyOf: [PERM_READ, PERM_DELETE],
             except: [PERM_WRITE],
@@ -266,7 +266,7 @@ describe('PermissionMap', () => {
             });
     }));
 
-    it('should validate only, except and anyOf all', async(function () {
+    it('should validate only, except and anyOf all', waitForAsync(function () {
         const map = new PermissionMap({
             anyOf: [PERM_READ, PERM_DELETE],
             only: [PERM_EXEC],

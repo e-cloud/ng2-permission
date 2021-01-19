@@ -1,7 +1,7 @@
 // tslint:disable:no-implicit-dependencies
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Observable, Observer, of } from 'rxjs';
 
@@ -72,7 +72,7 @@ describe('PermissionPipe', () => {
         expect(pipe).toBeTruthy();
     });
 
-    it('validate to permission and cause the target element unrendered', async(() => {
+    it('validate to permission and cause the target element unrendered', waitForAsync(() => {
         showElement = false;
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -83,7 +83,7 @@ describe('PermissionPipe', () => {
         });
     }));
 
-    it('validate to permission and make the target element rendered', async(() => {
+    it('validate to permission and make the target element rendered', waitForAsync(() => {
         showElement = true;
         fixture.detectChanges();
         fixture.whenStable().then(() => {

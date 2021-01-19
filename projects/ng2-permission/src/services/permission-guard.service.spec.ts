@@ -2,7 +2,7 @@
 /* tslint:disable:no-unused-variable */
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -108,26 +108,26 @@ describe('PermissionGuard', () => {
         fixture = TestBed.createComponent(RoutingComponent);
     });
 
-    beforeEach(async(inject([Router, Location], (_router: Router, _location: Location) => {
+    beforeEach(waitForAsync(inject([Router, Location], (_router: Router, _location: Location) => {
         location = _location;
         router = _router;
         return router.navigate(['/login']);
     })));
 
-    it('should not route to home without permission', async(() => {
+    it('should not route to home without permission', waitForAsync(() => {
         router.navigate(['/home']).then(() => {
             expect(location.path()).toBe('/login');
         });
     }));
 
-    it('should route to home with permission', async(() => {
+    it('should route to home with permission', waitForAsync(() => {
         _accessHome = true;
         router.navigate(['/home']).then(() => {
             expect(location.path()).toBe('/home');
         });
     }));
 
-    it('should route to login without enough permissions', async(() => {
+    it('should route to login without enough permissions', waitForAsync(() => {
         _accessHome = true;
         _suspect = true;
         router.navigate(['/home']).then(() => {
@@ -135,7 +135,7 @@ describe('PermissionGuard', () => {
         });
     }));
 
-    it('should route to 404 with redirect config', async(() => {
+    it('should route to 404 with redirect config', waitForAsync(() => {
         _accessHome = true;
         _suspect = true;
         router.navigate(['/home2']).then(() => {
