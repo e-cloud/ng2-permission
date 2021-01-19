@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/e-cloud/ng2-permission/compare/v1.2.0...v1.3.0) (2021-01-19)
+
+
+### Features
+
+* upgrade with angular 11 ([1f0bc26](https://github.com/e-cloud/ng2-permission/commit/1f0bc26))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/e-cloud/ng2-permission/compare/v1.1.0...v1.2.0) (2021-01-19)
 
