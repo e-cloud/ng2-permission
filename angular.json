@@ -18,7 +18,8 @@
           "configurations": {
             "production": {
               "project": "projects/ng2-permission/ng-package.prod.json"
-            }
+            ,              "tsConfig": "projects/ng2-permission/tsconfig.lib.prod.json"
+}
           }
         },
         "test": {
@@ -53,6 +54,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/demo",
             "index": "projects/demo/src/index.html",
             "main": "projects/demo/src/main.ts",
@@ -69,6 +71,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "projects/demo/src/environments/environment.ts",
@@ -167,7 +175,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": ""

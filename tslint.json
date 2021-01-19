@@ -103,8 +103,10 @@
     "no-unnecessary-qualifier": true,
     "no-unnecessary-type-assertion": false,
     "no-unsafe-any": false,
-    "no-unused-expression": [true, "allow-fast-null-checks"],
-    "no-use-before-declare": true,
+    "no-unused-expression": [
+      true,
+      "allow-fast-null-checks"
+    ],
     "no-var-keyword": true,
     "no-void-expression": {
       "severity": "warn"
@@ -165,11 +167,11 @@
     "whitespace": [true, "check-branch", "check-decl", "check-module", "check-operator", "check-preblock", "check-separator", "check-type"],
 
     "angular-whitespace": [true, "check-interpolation", "check-semicolon"],
-    "banana-in-box": true,
+    "template-banana-in-box": true,
     "component-class-suffix": true,
     "component-selector": [false, "element", [""], "kebab-case"],
-    "contextual-life-cycle": true,
-    "decorator-not-allowed": true,
+    "contextual-lifecycle": true,
+    "contextual-decorator": true,
     "directive-class-suffix": true,
     "directive-selector": [true, "attribute", [""], "camelCase"],
     "import-destructuring-spacing": true,
@@ -178,23 +180,23 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-unused-css": true,
-    "templates-no-negated-async": true,
-    "trackBy-function": {
+    "template-no-negated-async": true,
+    "template-use-track-by-function": {
       "severity": "warn"
     },
-    "use-host-property-decorator": {
+    "no-host-metadata-property": {
       "severity": "warn"
     },
-    "use-input-property-decorator": {
+    "no-inputs-metadata-property": {
       "severity": "warn"
     },
-    "use-life-cycle-interface": true,
-    "use-output-property-decorator": {
+    "use-lifecycle-interface": true,
+    "no-outputs-metadata-property": {
       "severity": "warn"
     },
     "use-pipe-decorator": true,
     "use-pipe-transform-interface": true,
-    "use-view-encapsulation": true,
+    "use-component-view-encapsulation": true,
 
     "no-accessor-recursion": true,
     "no-as-type-assertion": true,

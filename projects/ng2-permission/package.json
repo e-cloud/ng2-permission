@@ -21,6 +21,9 @@
   "jsnext:main": "ng2-permission.js",
   "es2015": "ng2-permission.js",
   "bundle": "ng2-permission.umd.js",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "typings": "ng2-permission.d.ts",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
