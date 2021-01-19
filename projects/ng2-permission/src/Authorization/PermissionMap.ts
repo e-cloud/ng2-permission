@@ -3,7 +3,6 @@ import isFunction from 'lodash-es/isFunction';
 import isNil from 'lodash-es/isNil';
 import isString from 'lodash-es/isString';
 import { forkJoin, from, Observable, of, throwError } from 'rxjs';
-import { isPromise } from 'rxjs/internal/util/isPromise';
 import { map, switchMap } from 'rxjs/operators';
 
 import { Dictionary } from '../models';
@@ -187,6 +186,10 @@ export function wrapIntoObservable<T>(value: T | Promise<T> | Observable<T>): Ob
         return from(value);
     }
     return of(value);
+}
+
+function isPromise<T>(value: any): value is Promise<T> {
+    return !!value && typeof value.subscribe !== 'function' && typeof value.then === 'function';
 }
 
 function isObjectSingleRedirectionRule(redirectTo: RedirectRoute) {

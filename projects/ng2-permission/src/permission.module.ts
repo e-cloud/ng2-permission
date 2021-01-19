@@ -37,7 +37,7 @@ export class PermissionModule {
     /**
      * @deprecated use PermissionModule directly
      */
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<PermissionModule> {
         return {
             ngModule: PermissionModule,
         };

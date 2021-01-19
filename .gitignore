@@ -16,6 +16,7 @@ src/*.d.ts
 
 # VS Code
 .vscode/*
+.history
 
 # Windows
 Thumbs.db
